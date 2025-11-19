@@ -1,0 +1,12 @@
+    OpenRGB v0.9+ (1.0rc1)
+    Commit:  from 
+    Launched: 20250822_190746
+====================================================================================================
+
+0     |Info:    [ProfileManager] Found file: pink.orp attempting to validate header
+0     |Info:    [ProfileManager] Valid v5 profile found for pink
+193   |Info:    [ResourceManager] Calling Post-detection callbacks
+193   |Info:    ------------------------------------------------------
+193   |Info:    |                Detection completed                 |
+193   |Info:    ------------------------------------------------------
+193   |ERROR:   [NetworkServer] Could not bind network socket. Is port 6742 already being used?

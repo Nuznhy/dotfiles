@@ -1,0 +1,16 @@
+    OpenRGB v0.9+ (1.0rc2)
+    Commit:  from 
+    Launched: 20251026_132729
+====================================================================================================
+
+18    |Info:    [ProfileManager] Found file: pink.orp attempting to validate header
+18    |Info:    [ProfileManager] Valid v5 profile found for pink
+444   |Info:    [ResourceManager] Calling Post-detection callbacks
+444   |Info:    ------------------------------------------------------
+444   |Info:    |                Detection completed                 |
+444   |Info:    ------------------------------------------------------
+444   |ERROR:   [NetworkServer] Could not bind network socket. Is port 6742 already being used?
+445   |Info:    [ProfileManager] Profile loading: Succeeded for ENE DRAM @ I2C: /dev/i2c-1, address 0x72
+445   |Info:    [ProfileManager] Profile loading: Succeeded for ENE DRAM @ I2C: /dev/i2c-1, address 0x73
+445   |Info:    [ProfileManager] Profile loading: Succeeded for Palit GeForce RTX 4090 Gamerock @ I2C: /dev/i2c-4, address 0x49
+445   |Info:    [ProfileManager] Profile loading: Succeeded for ASUS ROG STRIX B550-A GAMING @ HID: /dev/hidraw12

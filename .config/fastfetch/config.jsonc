@@ -1,0 +1,145 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "source": "~/marin.png",
+    "width": 25,
+    "height": 20,
+  },
+  "display": {
+    "separator": " ",
+    "key": {
+      "width": 25,
+      "paddingLeft": 4,
+      "type": "string"
+    },
+    "color": {
+            "separator": "1" // Bold
+        },
+    "constants": [
+        "───────────────────────────"
+    ],
+    "bar": {
+         "width": 25,
+         "char": {
+             "elapsed": "■",
+             "total": "-"
+         }
+     }
+  },
+  "modules": [
+    {
+      "type": "title",
+      "format": "{user-name-colored}"
+    },
+    {
+        "type": "custom",
+        "format": "┌{$1} {#1}System Information{#} {$1}┐"
+    },
+    {
+      "type": "os",
+      "key": "󰣇 OS",
+      "format": "{pretty-name}",
+      "keyColor": "#f5c2e7"
+    },
+    {
+      "type": "kernel",
+      "key": "├󰒔 Kernel",
+      "keyColor": "#f5c2e7"
+    },
+    {
+      "type": "packages",
+      "key": "├󰏖 Packages",
+      "keyColor": "#f5c2e7"
+    },
+    {
+      "type": "shell",
+      "key": "├ Shell",
+      "keyColor": "#f5c2e7"
+    },
+    {
+      "type": "wm",
+      "key": "├ Window Manager",
+      "keyColor": "#f5c2e7"
+    },
+    {
+      "type": "uptime",
+      "key": "└󰅐 Uptime",
+      "keyColor": "#f5c2e7"
+    },
+    "break",
+    {
+        "type": "chassis",
+        "key": "󰇅 PC",
+        "keyColor": "#cba6f7"
+    },
+    {
+      "type": "board",
+      "key": "├󱤓 Motherboard",
+      "format": "ASUS {name}",
+      "keyColor": "#cba6f7"
+    },
+    {
+      "type": "cpu",
+      "key": "├ CPU",
+      "format": "{name} ({cores-physical}C/{cores-logical}T) {freq-max}",
+      "keyColor": "#cba6f7"
+    },
+    {
+      "type": "gpu",
+      "key": "├󰢮 GPU",
+      "format": "{vendor} {name}",
+      "keyColor": "#cba6f7"
+    },
+    {
+        "type": "memory",
+        "key": "├ RAM",
+        "format": "{used} / {total} [{percentage}]",
+        "memoryPercentType": 3,
+        "keyColor": "#cba6f7"
+    },
+    {
+        "type": "disk",
+        "key": "├󱛟 Storage",
+        "format": "{mount-from} {size-used} / {size-total} [{size-percentage}] ",
+        "keyColor": "#cba6f7"
+    },
+    {
+        "type": "display",
+        "key": "├󰍹 Display",
+        "format": "{name} {inch}\" {width}x{height}@{refresh-rate}Hz ",
+        "keyColor": "#cba6f7"
+    },
+    {
+        "type": "terminal",
+        "key": "└ Terminal",
+        "format": "{pretty-name}",
+        "keyColor": "#cba6f7"
+    },
+    "break",
+    {
+        "type": "custom",
+        "format": "└{$1}────────────────────{$1}┘"
+    },
+    {
+            "type": "colors",
+            "paddingLeft": 30,
+            "symbol": "circle"
+    }
+    //"locale",
+    //"uptime",
+    //"packages",
+    //"display",
+    //"wmtheme",
+    //"theme",
+    //"icons",
+    //"font",
+    //"cursor",
+    //"terminal",
+    //"terminalfont",
+    //"swap",
+    //"disk",
+    //"localip",
+    //"battery",
+    //"poweradapter",
+  ]
+}

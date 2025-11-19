@@ -1,0 +1,12 @@
+    OpenRGB v0.9
+    Commit:  from 
+    Launched: 20250809_114251
+====================================================================================================
+
+0     |Info:    Found file: pink.orp attempting to validate header
+0     |Info:    Valid v4 profile found for pink
+627   |Info:    Profile loading: Succeeded for ENE DRAM @ I2C: /dev/i2c-1, address 0x72
+627   |Info:    Profile loading: Succeeded for ENE DRAM @ I2C: /dev/i2c-1, address 0x73
+627   |Info:    Profile loading: Succeeded for Palit 4090 Gamerock @ I2C: /dev/i2c-4, address 0x49
+627   |Info:    Profile loading: Succeeded for ASUS ROG STRIX B550-A GAMING @ HID: /dev/hidraw7
+627   |Info:    Profile loading: Succeeded for Keychron Gaming Keyboard 1 @ HID: /dev/hidraw0

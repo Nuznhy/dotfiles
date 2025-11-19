@@ -1,0 +1,36 @@
+    OpenRGB v0.9
+    Commit:  from 
+    Launched: 20250703_215925
+====================================================================================================
+
+0     |Info:    Found file: pink.orp attempting to validate header
+0     |Info:    Valid v4 profile found for pink
+5991  |Info:    Profile loading: Succeeded for ENE DRAM @ I2C: /dev/i2c-1, address 0x72
+5991  |Info:    Profile loading: Succeeded for ENE DRAM @ I2C: /dev/i2c-1, address 0x73
+5991  |Info:    Profile loading: Succeeded for Palit 4090 Gamerock @ I2C: /dev/i2c-4, address 0x49
+5991  |Info:    Profile loading: Succeeded for Keychron Gaming Keyboard 1 @ HID: /dev/hidraw12
+5991  |Info:    Profile loading: Succeeded for ASUS ROG STRIX B550-A GAMING @ HID: /dev/hidraw3
+6848  |Info:    Profile loading: Succeeded for ENE DRAM @ I2C: /dev/i2c-1, address 0x72
+6848  |Info:    Profile loading: Succeeded for ENE DRAM @ I2C: /dev/i2c-1, address 0x73
+6848  |Info:    Profile loading: Succeeded for Palit 4090 Gamerock @ I2C: /dev/i2c-4, address 0x49
+6848  |Info:    Profile loading: Succeeded for Keychron Gaming Keyboard 1 @ HID: /dev/hidraw12
+6848  |Info:    Profile loading: Succeeded for ASUS ROG STRIX B550-A GAMING @ HID: /dev/hidraw3
+4744988|Info:    Profile loading: Succeeded for ENE DRAM @ I2C: /dev/i2c-1, address 0x72
+4744988|Info:    Profile loading: Succeeded for ENE DRAM @ I2C: /dev/i2c-1, address 0x73
+4744988|Info:    Profile loading: Succeeded for Palit 4090 Gamerock @ I2C: /dev/i2c-4, address 0x49
+4744988|Info:    Profile loading: Succeeded for Keychron Gaming Keyboard 1 @ HID: /dev/hidraw12
+4744988|Info:    Profile loading: Succeeded for ASUS ROG STRIX B550-A GAMING @ HID: /dev/hidraw3
+4750813|Info:    Found file: pink.orp attempting to validate header
+4750813|Info:    Valid v4 profile found for pink
+4753426|Info:    Found file: pink.orp attempting to validate header
+4753426|Info:    Valid v4 profile found for pink
+4926251|Info:    Profile loading: Succeeded for ENE DRAM @ I2C: /dev/i2c-1, address 0x72
+4926251|Info:    Profile loading: Succeeded for ENE DRAM @ I2C: /dev/i2c-1, address 0x73
+4926251|Info:    Profile loading: Succeeded for Palit 4090 Gamerock @ I2C: /dev/i2c-4, address 0x49
+4926251|Info:    Profile loading: Succeeded for Keychron Gaming Keyboard 1 @ HID: /dev/hidraw12
+4926251|Info:    Profile loading: Succeeded for ASUS ROG STRIX B550-A GAMING @ HID: /dev/hidraw3
+4926503|Info:    Profile loading: Succeeded for ENE DRAM @ I2C: /dev/i2c-1, address 0x72
+4926503|Info:    Profile loading: Succeeded for ENE DRAM @ I2C: /dev/i2c-1, address 0x73
+4926503|Info:    Profile loading: Succeeded for Palit 4090 Gamerock @ I2C: /dev/i2c-4, address 0x49
+4926503|Info:    Profile loading: Succeeded for Keychron Gaming Keyboard 1 @ HID: /dev/hidraw12
+4926503|Info:    Profile loading: Succeeded for ASUS ROG STRIX B550-A GAMING @ HID: /dev/hidraw3

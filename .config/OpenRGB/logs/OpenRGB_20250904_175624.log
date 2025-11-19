@@ -1,0 +1,72 @@
+    OpenRGB v0.9+ (1.0rc1)
+    Commit:  from 
+    Launched: 20250904_175624
+====================================================================================================
+
+7     |Info:    [ProfileManager] Found file: pink.orp attempting to validate header
+10    |Info:    [ProfileManager] Valid v5 profile found for pink
+66    |Info:    [ResourceManager] Initializing HID interfaces: Success
+66    |Info:    ------------------------------------------------------
+66    |Info:    |               Start device detection               |
+66    |Info:    ------------------------------------------------------
+79    |Info:    ------------------------------------------------------
+79    |Info:    |             Detecting I2C interfaces               |
+79    |Info:    ------------------------------------------------------
+79    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-3 Device 1022:790B Subsystem: 1043:87C0
+79    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-1 Device 1022:790B Subsystem: 1043:87C0
+79    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-8 Device 10DE:2684 Subsystem: 1569:F296
+79    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-6 Device 10DE:2684 Subsystem: 1569:F296
+80    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-4 Device 10DE:2684 Subsystem: 1569:F296
+80    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-2 Device 1022:790B Subsystem: 1043:87C0
+80    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-0 Device 0000:0000 Subsystem: 0000:0000
+80    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-9 Device 10DE:2684 Subsystem: 1569:F296
+80    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-7 Device 10DE:2684 Subsystem: 1569:F296
+80    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-5 Device 10DE:2684 Subsystem: 1569:F296
+80    |Info:    ------------------------------------------------------
+80    |Info:    |               Detecting I2C devices                |
+80    |Info:    ------------------------------------------------------
+435   |Info:    [ENE DRAM] Registering RGB controller
+602   |Info:    [ENE DRAM] Registering RGB controller
+1593  |Info:    ------------------------------------------------------
+1593  |Info:    |            Detecting I2C DIMM modules              |
+1593  |Info:    ------------------------------------------------------
+1728  |Info:    ------------------------------------------------------
+1728  |Info:    |               Detecting I2C PCI devices            |
+1728  |Info:    ------------------------------------------------------
+1728  |Info:    [Palit GeForce RTX 4090 Gamerock] Registering RGB controller
+1729  |Info:    ------------------------------------------------------
+1729  |Info:    |               Detecting HID devices                |
+1729  |Info:    ------------------------------------------------------
+1756  |Info:    [ASUS ROG STRIX B550-A GAMING] Registering RGB controller
+1758  |Info:    ------------------------------------------------------
+1758  |Info:    |            Detecting libusb HID devices            |
+1758  |Info:    ------------------------------------------------------
+1806  |Info:    ------------------------------------------------------
+1806  |Info:    |              Detecting other devices               |
+1806  |Info:    ------------------------------------------------------
+1821  |Info:    [ResourceManager] Calling Post-detection callbacks
+1821  |Info:    ------------------------------------------------------
+1821  |Info:    |                Detection completed                 |
+1821  |Info:    ------------------------------------------------------
+1821  |Dialog:  <h2>WARNING:</h2><p>Multiple OpenRGB udev rules are installed.</p><p>The udev rules file 60-openrgb.rules is installed in both /etc/udev/rules.d and /usr/lib/udev/rules.d.</p><p>Multiple udev rules files can conflict, it is recommended to remove one of them.</p>
+1821  |Info:    [NetworkServer] Network connection thread started on port 6742
+1822  |Info:    [ProfileManager] Profile loading: Succeeded for ENE DRAM @ I2C: /dev/i2c-1, address 0x72
+1822  |Info:    [ProfileManager] Profile loading: Succeeded for ENE DRAM @ I2C: /dev/i2c-1, address 0x73
+1822  |Info:    [ProfileManager] Profile loading: Succeeded for Palit GeForce RTX 4090 Gamerock @ I2C: /dev/i2c-4, address 0x49
+1822  |Info:    [ProfileManager] Profile loading: Succeeded for ASUS ROG STRIX B550-A GAMING @ HID: /dev/hidraw7
+6242  |Info:    [NetworkServer] Network server started
+6779  |ERROR:   [NetworkServer] recv_select failed receiving magic, closing listener
+6779  |Info:    [NetworkServer] Closing server connection: 127.0.0.1
+7159  |Info:    [NetworkServer] Network server started
+7697  |ERROR:   [NetworkServer] recv_select failed receiving magic, closing listener
+7697  |Info:    [NetworkServer] Closing server connection: 127.0.0.1
+8075  |Info:    [NetworkServer] Network server started
+8612  |ERROR:   [NetworkServer] recv_select failed receiving magic, closing listener
+8612  |Info:    [NetworkServer] Closing server connection: 127.0.0.1
+8986  |Info:    [NetworkServer] Network server started
+9523  |ERROR:   [NetworkServer] recv_select failed receiving magic, closing listener
+9523  |Info:    [NetworkServer] Closing server connection: 127.0.0.1
+9669  |Info:    [NetworkServer] Network server started
+10207 |ERROR:   [NetworkServer] recv_select failed receiving magic, closing listener
+10207 |Info:    [NetworkServer] Closing server connection: 127.0.0.1
+70573 |Info:    [NetworkServer] Network server started
