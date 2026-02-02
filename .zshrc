@@ -158,4 +158,5 @@ export PATH="$HOME/.local/share/nvim/site/pack/blink/start/blink.cmp/target/rele
 export STEAM_FORCE_DESKTOPUI_SCALING=1.5 
 
 # opencode
-export PATH=/home/nuznhy/.opencode/bin:$PATH
+export PATH="$HOME/.opencode/bin:$PATH"
+export OPENCODE_CONFIG="$HOME/dotfiles/.config/opencode/opencode.jsonc"
