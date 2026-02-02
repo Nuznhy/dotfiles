@@ -58,10 +58,16 @@ vim.pack.add({
     { src = "https://github.com/nvim-telescope/telescope.nvim" },
     { src = "https://github.com/L3MON4D3/LuaSnip" },
     { src = "https://github.com/rafamadriz/friendly-snippets" },
-    { src = "https://github.com/Saghen/blink.cmp" },
+    { src = "https://github.com/Saghen/blink.cmp", version = "v1.8.0" },
     { src = "https://github.com/mbbill/undotree" },
+    { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
+    { src = "https://github.com/vinnymeller/swagger-preview.nvim" },
+    { src = "https://github.com/ellisonleao/gruvbox.nvim" },
     { src = "https://github.com/rose-pine/neovim" },
-
+    { src = "https://github.com/nvimtools/none-ls.nvim" },
+    { src = "https://github.com/MunifTanjim/prettier.nvim" },
+    { src = "https://github.com/MunifTanjim/nui.nvim" },
+    { src = "https://github.com/esmuellert/vscode-diff.nvim" }
 })
 
 -- for v,k in pairs(vim.pack.get()) do for j,i in pairs(k) do if type(i) == 'table' then print(i.name) end  end end
@@ -93,18 +99,17 @@ vim.keymap.set('n', '<C-p>', telescope_builtin.git_files, {})
 vim.keymap.set('n', '<leader>ps', function() telescope_builtin.grep_string({ search = vim.fn.input "Grep >" }) end)
 
 -- LSP --
-
-vim.lsp.config("somesass_ls", {
+vim.lsp.config('somesass_ls', {
     filetypes = { "sass", "scss", "less", "css", "html" }
 })
 
-vim.lsp.config("ts_ls", {
+vim.lsp.config('ts_ls', {
     name = "ts_ls",
-    root_dir = function(bufnr, on_dir)
-        local root = vim.fs.root(bufnr, { "tsconfig.json", "package.json" })
-        if root then
-            on_dir(root)
-        end
+    root_dir = function(fname)
+        return require("lspconfig.util").root_pattern(
+            "tsconfig.json",
+            "package.json"
+        )(fname)
     end,
     filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact", "vue" }
 })
@@ -131,8 +136,8 @@ vim.lsp.config('vtsls', {
     filetypes = { 'vue' },
 })
 
-vim.lsp.config("eslint", { settings = { format = true } })
-vim.lsp.config("tailwindcss", {
+vim.lsp.config('eslint', { settings = { format = true } })
+vim.lsp.config('tailwindcss', {
     settings = {
         tailwindCSS = {
             files = {
@@ -141,10 +146,12 @@ vim.lsp.config("tailwindcss", {
                     "**/site-packages/**",
                 },
             },
+            classAttributes = { "class", "className", "classList", "ngClass", "ui", },
         },
     },
 })
-vim.lsp.enable({ "lua_ls", "typst", "ts_ls", "vtsls", "vue_ls", "pyright", "bashls", "djlsp", "eslint", "somesass_ls", "html", "clangd", "tinymist"})
+vim.lsp.enable({ "lua_ls", "typst", "ts_ls", "vtsls", "vue_ls", "pyright", "bashls", "djlsp", "eslint", "somesass_ls",
+    "html", "clangd", "tinymist" })
 vim.lsp.config("lua_ls", {
     settings = {
         Lua = {
@@ -160,6 +167,48 @@ vim.diagnostic.config({ jump = { float = true } })
 vim.keymap.set('n', '<leader>vca', vim.lsp.buf.code_action)
 vim.keymap.set('n', '<leader>vrn', vim.lsp.buf.rename)
 
+-- local prettier = require("prettier")
+--
+-- prettier.setup({
+--   bin = 'prettier', -- or `'prettierd'` (v0.23.3+)
+--   filetypes = {
+--     "css",
+--     "graphql",
+--     "html",
+--     "javascript",
+--     "javascriptreact",
+--     "json",
+--     "less",
+--     "markdown",
+--     "scss",
+--     "typescript",
+--     "typescriptreact",
+--     "yaml",
+--   },
+-- })
+-- local null_ls = require("null-ls")
+-- null_ls.setup(
+--     {
+--         sources = {
+--             null_ls.builtins.formatting.prettier,
+--         },
+--         on_attach = function(client, bufnr)
+--             if client.supports_method("textDocument/formatting") then
+--                 local aug = vim.api.nvim_create_augroup("LspFormatting", {})
+--                 vim.api.nvim_clear_autocmds({ group = aug, buffer = bufnr })
+--                 vim.api.nvim_create_autocmd("BufWritePre", {
+--                     group = aug,
+--                     buffer = bufnr,
+--                     callback = function()
+--                         vim.lsp.buf.format({ bufnr = bufnr })
+--                     end,
+--                 })
+--             end
+--         end,
+--     }
+-- )
+
+
 require "catppuccin".setup({
     transparent_background = false,
     float = { transparent = false, solid = false },
@@ -168,15 +217,60 @@ require "catppuccin".setup({
     end
 })
 
+require "gruvbox".setup({
+    transparent_mode = true
+})
+
+vim.g.rose_pine_variant = "main"
+require("rose-pine").setup({
+    variant = vim.g.rose_pine_variant,
+    dark_variant = "main",
+    styles = {
+        transparency = true,
+    },
+})
+
 -- vim.cmd("colorscheme catppuccin-mocha")
+-- vm.cmd("colorscheme gruvbox")
 vim.cmd("colorscheme rose-pine")
 vim.cmd(":hi statusline guibg=NONE")
+
+local is_dark = false
+
+function ToggleRosePine()
+    if is_dark then
+        vim.g.rose_pine_variant = "dawn"
+        is_dark = false
+        require("rose-pine").setup({
+            variant = vim.g.rose_pine_variant,
+            dark_variant = "main",
+            styles = {
+                transparency = false,
+            },
+        })
+    else
+        vim.g.rose_pine_variant = "main"
+        is_dark = true
+        require("rose-pine").setup({
+            variant = vim.g.rose_pine_variant,
+            dark_variant = "main",
+            styles = {
+                transparency = true
+            },
+        })
+    end
+    vim.cmd("colorscheme rose-pine")
+    vim.cmd(":hi statusline guibg=NONE")
+end
+
+-- map it to <leader>tc (you can change this)
+vim.api.nvim_set_keymap("n", "<leader>tc", "<cmd>lua ToggleRosePine()<CR>", { noremap = true, silent = true })
 
 require("luasnip.loaders.from_vscode").lazy_load()
 require("blink.cmp").setup({
     signature = { enabled = true },
     fuzzy = {
-        implementation = "lua",
+        --        implementation = "lua",
         sorts = {
             'exact',
             -- defaults
@@ -198,3 +292,7 @@ require("blink.cmp").setup({
         }
     }
 })
+
+
+require("ibl").setup()
+require("swagger-preview").setup({ port = 3010, host = "localhost" })
