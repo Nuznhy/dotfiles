@@ -15,7 +15,7 @@ eval "$(rbenv init - zsh)"
 #        exit
 #    fi
 #fi
-
+export GTK_THEME="Adwaita:dark"
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -152,6 +152,10 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 
 eval "$(atuin init zsh)"
-export OLLAMA_MODELS=/mnt/wdnvme/models
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 export PATH="$HOME/.local/share/nvim/site/pack/blink/start/blink.cmp/target/release:$PATH"
+
+export STEAM_FORCE_DESKTOPUI_SCALING=1.5 
+
+# opencode
+export PATH=/home/nuznhy/.opencode/bin:$PATH

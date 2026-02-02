@@ -31,6 +31,7 @@
     ],
     "modules-right": [
         "custom/rounded-split-left",
+        "custom/privacy-dots",
         "cpu",
         "memory",
         "temperature", 
@@ -74,7 +75,7 @@
         }
     },
     "hyprland/language": {
-        "format": " {}",
+        "format": "  {}",
         "format-en": "en",
         "format-uk": "ua",
         "align": "center", 
@@ -239,8 +240,8 @@
         "format": "{volume} {icon}",
         //"format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
         //"format-source": "{volume}% ",
         "format-source": "",
         "format-source-muted": "",
@@ -318,5 +319,14 @@
         "icon": true,
         "align": "center", 
         "justify": "center"
+    },
+    "custom/privacy-dots": {
+        "exec": "privacy-dots", 
+        "return-type": "json",
+        "interval": 3,
+        "format": "{text}",
+        "tooltip": true,
+        "escape": false,
+        "markup": "pango"
     }
 }

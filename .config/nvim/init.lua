@@ -93,15 +93,19 @@ vim.keymap.set('n', '<C-p>', telescope_builtin.git_files, {})
 vim.keymap.set('n', '<leader>ps', function() telescope_builtin.grep_string({ search = vim.fn.input "Grep >" }) end)
 
 -- LSP --
-local lspconfig = require("lspconfig")
 
-lspconfig.somesass_ls.setup({
+vim.lsp.config("somesass_ls", {
     filetypes = { "sass", "scss", "less", "css", "html" }
 })
 
-lspconfig.ts_ls.setup({
+vim.lsp.config("ts_ls", {
     name = "ts_ls",
-    root_dir = lspconfig.util.root_pattern("tsconfig.json", "package.json"),
+    root_dir = function(bufnr, on_dir)
+        local root = vim.fs.root(bufnr, { "tsconfig.json", "package.json" })
+        if root then
+            on_dir(root)
+        end
+    end,
     filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact", "vue" }
 })
 
@@ -127,8 +131,8 @@ vim.lsp.config('vtsls', {
     filetypes = { 'vue' },
 })
 
-lspconfig.eslint.setup({ settings = { format = true } })
-lspconfig.tailwindcss.setup({
+vim.lsp.config("eslint", { settings = { format = true } })
+vim.lsp.config("tailwindcss", {
     settings = {
         tailwindCSS = {
             files = {
@@ -172,7 +176,7 @@ require("luasnip.loaders.from_vscode").lazy_load()
 require("blink.cmp").setup({
     signature = { enabled = true },
     fuzzy = {
-        --        implementation = "lua",
+        implementation = "lua",
         sorts = {
             'exact',
             -- defaults

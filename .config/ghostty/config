@@ -42,7 +42,7 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 font-family = "MesloLGS NF"
-font-size = 9
+font-size = 14
 # theme = catppuccin-frappe
 theme = Rose Pine
 
