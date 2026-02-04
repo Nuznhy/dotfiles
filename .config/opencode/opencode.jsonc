@@ -5,13 +5,38 @@
       "npm": "@ai-sdk/openai-compatible",
       "name": "Ollama (local)",
       "options": {
-        "baseURL": "http://localhost:11434/v1"
+        "baseURL": "http://localhost:11434/v1",
       },
       "models": {
-          "glm-4.7-flash:q8_0": {
-              "name": "glm-4.7-flash:q8_0"
-          }
+        "gpt-oss:20b": {
+          "name": "gpt-oss:20b",
+        },
+        "devstral:latest": {
+            "name": "devstral:latest"
+        },
+        "qwen3-coder:latest": {
+            "name": "qwen3-coder:latest"
+        },
+        "qwen2.5-coder:32b": {
+            "name": "qwen2.5-coder:32b"
+        }
       }
+    },
+    "llama.cpp": {
+        "npm": "@ai-sdk/openai-compatible",
+        "name": "llama-server (local)",
+        "options": {
+            "baseURL": "http://localhost:8080/v1"
+        },
+        "models": {
+            "qwen3-coder:a3b": {
+                "name": "Qwen3-Coder: a3b-30b (local)",
+                "limit": {
+                    "context": 128000,
+                    "output": 65536
+                }
+            }
+        }
     }
   }
 }

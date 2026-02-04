@@ -17,6 +17,7 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 
 -- KEYMAPS --
 
+vim.cmd.cd(vim.fn.getcwd())
 vim.keymap.set('n', '<leader>o', ':update<CR> :source<CR>')
 vim.keymap.set('n', '<leader>w', ':write<CR>')
 vim.keymap.set('n', '<leader>q', ':quit<CR>')
@@ -52,13 +53,14 @@ vim.pack.add({
     { src = "https://github.com/neovim/nvim-lspconfig" },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
     { src = "https://github.com/chomosuke/typst-preview.nvim" },
+    { src = "https://github.com/milanglacier/minuet-ai.nvim" },
     { src = "https://github.com/mason-org/mason.nvim" },
     { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
     { src = "https://github.com/nvim-lua/plenary.nvim" },
     { src = "https://github.com/nvim-telescope/telescope.nvim" },
     { src = "https://github.com/L3MON4D3/LuaSnip" },
     { src = "https://github.com/rafamadriz/friendly-snippets" },
-    { src = "https://github.com/Saghen/blink.cmp", version = "v1.8.0" },
+    { src = "https://github.com/Saghen/blink.cmp",                   version = "v1.8.0" },
     { src = "https://github.com/mbbill/undotree" },
     { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
     { src = "https://github.com/vinnymeller/swagger-preview.nvim" },
@@ -67,7 +69,11 @@ vim.pack.add({
     { src = "https://github.com/nvimtools/none-ls.nvim" },
     { src = "https://github.com/MunifTanjim/prettier.nvim" },
     { src = "https://github.com/MunifTanjim/nui.nvim" },
-    { src = "https://github.com/esmuellert/vscode-diff.nvim" }
+    { src = "https://github.com/esmuellert/vscode-diff.nvim" },
+    { src = "https://github.com/nvim-tree/nvim-web-devicons" },
+    { src = "https://github.com/folke/snacks.nvim" },
+    { src = "https://github.com/nickjvandyke/opencode.nvim" },
+    { src = "https://github.com/nvim-lualine/lualine.nvim" }
 })
 
 -- for v,k in pairs(vim.pack.get()) do for j,i in pairs(k) do if type(i) == 'table' then print(i.name) end  end end
@@ -76,10 +82,13 @@ require "mason".setup()
 require "mini.pick".setup()
 require "oil".setup()
 require "nvim-treesitter.configs".setup({
+    modules = {},
     ensure_installed = {
         "typescript",
         "javascript", "css", "python", "html", "vue", "lua", "json", "bash", "cpp", "cmake", "git_config", "gitcommit",
-        "http", "json5", "make", "scss", "c", "vim", "vimdoc", "query" },
+        "http", "json5", "make", "scss", "c", "vim", "vimdoc", "query",
+    },
+    ignore_install = {},
     highlight = { enable = true },
     sync_install = false,
     auto_install = true
@@ -105,12 +114,6 @@ vim.lsp.config('somesass_ls', {
 
 vim.lsp.config('ts_ls', {
     name = "ts_ls",
-    root_dir = function(fname)
-        return require("lspconfig.util").root_pattern(
-            "tsconfig.json",
-            "package.json"
-        )(fname)
-    end,
     filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact", "vue" }
 })
 
@@ -151,7 +154,7 @@ vim.lsp.config('tailwindcss', {
     },
 })
 vim.lsp.enable({ "lua_ls", "typst", "ts_ls", "vtsls", "vue_ls", "pyright", "bashls", "djlsp", "eslint", "somesass_ls",
-    "html", "clangd", "tinymist" })
+    "html", "clangd", "tinymist", "tailwindcss" })
 vim.lsp.config("lua_ls", {
     settings = {
         Lua = {
@@ -278,10 +281,29 @@ require("blink.cmp").setup({
             'sort_text',
         },
     },
+    -- keymap = {
+    --     -- Manually invoke minuet completion.
+    --     ['<A-y>'] = require('minuet').make_blink_map(),
+    -- },
     sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        -- Enable minuet for autocomplete
+        default = { 'lsp', 'path', 'buffer', 'snippets'  },
+        -- default = { 'lsp', 'path', 'buffer', 'snippets', 'minuet' },
+        -- For manual completion only, remove 'minuet' from default
+        -- providers = {
+        --     minuet = {
+        --         name = 'minuet',
+        --         module = 'minuet.blink',
+        --         async = true,
+        --         -- Should match minuet.config.request_timeout * 1000,
+        --         -- since minuet.config.request_timeout is in seconds
+        --         timeout_ms = 3000,
+        --         score_offset = 50, -- Gives minuet higher priority among suggestions
+        --     },
+        -- },
     },
     completion = {
+        trigger = { prefetch_on_insert = false },
         documentation = { auto_show = true, auto_show_delay_ms = 500 },
         menu = {
             auto_show = true,
@@ -294,5 +316,133 @@ require("blink.cmp").setup({
 })
 
 
-require("ibl").setup()
-require("swagger-preview").setup({ port = 3010, host = "localhost" })
+-- require("ibl").setup()
+require("swagger-preview").setup({ port = 3011, host = "localhost" })
+
+require('lualine').setup {
+    options = {
+        icons_enabled = true,
+        theme = 'auto',
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
+        disabled_filetypes = {
+            statusline = {},
+            winbar = {},
+        },
+        ignore_focus = {},
+        always_divide_middle = true,
+        always_show_tabline = true,
+        globalstatus = false,
+        refresh = {
+            statusline = 1000,
+            tabline = 1000,
+            winbar = 1000,
+            refresh_time = 16, -- ~60fps
+            events = {
+                'WinEnter',
+                'BufEnter',
+                'BufWritePost',
+                'SessionLoadPost',
+                'FileChangedShellPost',
+                'VimResized',
+                'Filetype',
+                'CursorMoved',
+                'CursorMovedI',
+                'ModeChanged',
+            },
+        }
+    },
+    sections = {
+        lualine_a = { 'mode' },
+        lualine_b = { 'branch', 'diff', 'diagnostics' },
+        lualine_c = { 'filename' },
+        lualine_x = { 'encoding', 'fileformat', 'filetype' },
+        lualine_y = {},
+        lualine_z = { 'location' }
+    },
+    inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { 'filename' },
+        lualine_x = { 'location' },
+        lualine_y = {},
+        lualine_z = {}
+    },
+    tabline = {},
+    winbar = {},
+    inactive_winbar = {},
+    extensions = {}
+}
+
+local snacks = require("snacks")
+snacks.setup({
+    animate = { enabled = true },
+    bigfile = { enabled = false },
+    dashboard = { enabled = false },
+    explorer = { enabled = false },
+    indent = { enabled = true },
+    input = { enabled = true },
+    picker = { enabled = true },
+    notifier = { enabled = true },
+    quickfile = { enabled = false },
+    scope = { enabled = true },
+    scroll = { enabled = false },
+    statuscolumn = { enabled = false },
+    words = { enabled = false },
+    terminal = { enabled = true }
+})
+
+vim.keymap.set({ "n", "x" }, "<leader>t", function() snacks.terminal() end, { desc = "Toggle terminal" })
+
+-- Required for `opts.events.reload`.
+vim.o.autoread = true
+
+local opencode = require("opencode")
+
+-- Primary Actions
+vim.keymap.set({ "n", "x" }, "<C-a>", function() opencode.ask("@this: ", { submit = true }) end,
+    { desc = "Ask opencode…" })
+vim.keymap.set({ "n", "x" }, "<C-x>", function() opencode.select() end, { desc = "Execute opencode action…" })
+vim.keymap.set({ "n", "t" }, "<C-s>", function() opencode.toggle() end, { desc = "Toggle opencode" })
+
+-- Operator mappings
+vim.keymap.set({ "n", "x" }, "go", function() return opencode.operator("@this ") end,
+    { desc = "Add range to opencode", expr = true })
+vim.keymap.set("n", "goo", function() return opencode.operator("@this ") .. "_" end,
+    { desc = "Add line to opencode", expr = true })
+
+-- Scrolling
+vim.keymap.set("n", "<S-C-u>", function() opencode.command("session.half.page.up") end, { desc = "Scroll opencode up" })
+vim.keymap.set("n", "<S-C-d>", function() opencode.command("session.half.page.down") end,
+    { desc = "Scroll opencode down" })
+
+-- Remapping Increment/Decrement (Opinionated remaps from the original config)
+-- These override the default <C-a> and <C-x> behavior to + and -
+vim.keymap.set("n", "+", "<C-a>", { desc = "Increment under cursor", noremap = true })
+vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement under cursor", noremap = true })
+
+
+-- require('minuet').setup {
+--     provider = 'openai_fim_compatible',
+--     n_completions = 1, -- recommend for local model for resource saving
+--     -- I recommend beginning with a small context window size and incrementally
+--     -- expanding it, depending on your local computing power. A context window
+--     -- of 512, serves as an good starting point to estimate your computing
+--     -- power. Once you have a reliable estimate of your local computing power,
+--     -- you should adjust the context window to a larger value.
+--     context_window = 512,
+--     provider_options = {
+--         openai_fim_compatible = {
+--             -- For Windows users, TERM may not be present in environment variables.
+--             -- Consider using APPDATA instead.
+--             api_key = 'TERM',
+--             name = 'Ollama',
+--             end_point = 'http://localhost:11434/v1/completions',
+--             model = 'qwen2.5-coder:7b',
+--             optional = {
+--                 max_tokens = 56,
+--                 top_p = 0.9,
+--             },
+--         },
+--     },
+-- }

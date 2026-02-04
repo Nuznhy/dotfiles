@@ -4,7 +4,7 @@ DIRS=(
   "$HOME/Remomedi/backend"
   "$HOME/Remomedi"
   "$HOME"
-  "$HOME/projects"
+  "$HOME/myProjects"
   "$HOME/Baradata"
 )
 
