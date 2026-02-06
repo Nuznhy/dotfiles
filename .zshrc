@@ -160,3 +160,8 @@ export STEAM_FORCE_DESKTOPUI_SCALING=1.5
 # opencode
 export PATH="$HOME/.opencode/bin:$PATH"
 export OPENCODE_CONFIG="$HOME/dotfiles/.config/opencode/opencode.jsonc"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/nuznhy/.lmstudio/bin"
+# End of LM Studio CLI section
+

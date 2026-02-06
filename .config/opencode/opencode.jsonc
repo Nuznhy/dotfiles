@@ -22,19 +22,15 @@
         }
       }
     },
-    "llama.cpp": {
+    "lmstudio": {
         "npm": "@ai-sdk/openai-compatible",
-        "name": "llama-server (local)",
+        "name": "LM Studio (local)",
         "options": {
-            "baseURL": "http://localhost:8080/v1"
+            "baseURL": "http://127.0.0.1:1234/v1"
         },
         "models": {
-            "qwen3-coder:a3b": {
-                "name": "Qwen3-Coder: a3b-30b (local)",
-                "limit": {
-                    "context": 128000,
-                    "output": 65536
-                }
+            "qwen/qwen3-coder-30b": {
+                "name": "Qwen3 Coder"
             }
         }
     }
