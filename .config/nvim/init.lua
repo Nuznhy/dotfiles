@@ -112,6 +112,8 @@ vim.lsp.config('somesass_ls', {
     filetypes = { "sass", "scss", "less", "css", "html" }
 })
 
+vim.lsp.config('qmlls', {})
+
 vim.lsp.config('ts_ls', {
     name = "ts_ls",
     filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact", "vue" }

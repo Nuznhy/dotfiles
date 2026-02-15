@@ -5,6 +5,7 @@
     //"height": 34, // Waybar height (to be removed for auto height)
     //"width": 3440, // Waybar width
     //"spacing": 0, // Gaps between modules (4px)
+    "output": ["DP-2", "HDMI-A-1"],
     "margin-top": 4,
     "margin-left": 5,
     "margin-right": 5,
