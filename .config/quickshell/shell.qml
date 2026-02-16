@@ -1,3 +1,4 @@
+//@ pragma UseQApplication
 // shell.qml
 import Quickshell
 import Quickshell.Wayland
@@ -11,6 +12,7 @@ import "components"
 
 ShellRoot {
     id: root
+
     Variants {
         model: Quickshell.screens
 
@@ -52,30 +54,50 @@ ShellRoot {
                     spacing: 0
 
                     // Left padding
-                    Item { width: 24 }
+                    Item { width: 34 }
 
                     // Workspaces
-                        WorkspaceBar {
-                            Layout.preferredHeight: parent.height
-                            Layout.alignment: Qt.AlignLeft
-                        }
+                    WorkspaceBar {
+                        Layout.preferredHeight: parent.height
+                        Layout.alignment: Qt.AlignLeft
+                    }
+                    Item { width: 12 } 
+
+                    Tray {}
 
                     Item {
                         Layout.fillWidth: true
                     }
 
-                    Clock {
-                        Layout.alignment: Qt.AlignHCenter
+                    Cpu {
+                        
+                    }
+                    Item { width: 12 } 
+                    
+                    Memory {
+                    }
+                    Item { width: 12 } 
+
+                    VolumeWidget {
+
+                    }
+                    Item { width: 12 } 
+
+                    KeyboardLanguage {
+
+                    }
+                    Item { width: 12 } 
+
+                    PowerWidger {
+
                     }
 
-                    Item {
-                        Layout.fillWidth: true
-                    }
-
-
-                    VolumeWidget{}
-                        Item { width: 24 } 
+                    Item { width: 40 } 
                 }
+            }
+
+            Clock {
+                anchors.centerIn: parent
             }
 
             MouseArea {
