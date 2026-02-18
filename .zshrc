@@ -165,3 +165,5 @@ export OPENCODE_CONFIG="$HOME/dotfiles/.config/opencode/opencode.jsonc"
 export PATH="$PATH:/home/nuznhy/.lmstudio/bin"
 # End of LM Studio CLI section
 
+
+export PATH=$PATH:/home/nuznhy/.spicetify
