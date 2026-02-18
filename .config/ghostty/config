@@ -44,7 +44,7 @@
 font-family = "MesloLGS NF"
 font-size = 14
 # theme = catppuccin-frappe
-theme = Rose Pine
+theme = noctalia
 
 cursor-style = block
 
