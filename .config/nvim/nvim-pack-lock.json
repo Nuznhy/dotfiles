@@ -4,6 +4,10 @@
       "rev": "3732756842a2f7e0e76a7b0487e9692072857277",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
+    "base16-nvim": {
+      "rev": "80ce668de796d1564d875a3c31822b4db3ae1d91",
+      "src": "https://github.com/RRethy/base16-nvim"
+    },
     "blink.cmp": {
       "rev": "73ea297bc665c936b51797d5a55599536ffee0d8",
       "src": "https://github.com/Saghen/blink.cmp",

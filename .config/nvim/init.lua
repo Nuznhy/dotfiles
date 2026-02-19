@@ -47,6 +47,7 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 -- PACKER --
 
 vim.pack.add({
+    { src = "https://github.com/RRethy/base16-nvim" },
     { src = "https://github.com/catppuccin/nvim" },
     { src = "https://github.com/stevearc/oil.nvim" },
     { src = "https://github.com/echasnovski/mini.pick" },
@@ -78,6 +79,7 @@ vim.pack.add({
 
 -- for v,k in pairs(vim.pack.get()) do for j,i in pairs(k) do if type(i) == 'table' then print(i.name) end  end end
 
+-- require('matugen').setup()
 require "mason".setup()
 require "mini.pick".setup()
 require "oil".setup()
@@ -226,6 +228,44 @@ require "gruvbox".setup({
     transparent_mode = true
 })
 
+local function get_noctalia_dark_mode()
+  local result = vim.system(
+    { "qs", "-c", "noctalia-shell", "ipc", "call", "state", "all" },
+    { text = true }
+  ):wait()
+
+  if result.code ~= 0 then
+    return nil
+  end
+
+  local ok, decoded = pcall(vim.json.decode, result.stdout)
+  if not ok then
+    return nil
+  end
+
+  return decoded.settings.colorSchemes.darkMode
+end
+
+local function apply_rose_pine_from_noctalia()
+  local is_dark = get_noctalia_dark_mode()
+
+  if is_dark == nil then
+    return
+  end
+
+  local variant = is_dark and "main" or "dawn"
+
+  require("rose-pine").setup({
+    variant = variant,
+    dark_variant = "main",
+    styles = {
+      transparency = is_dark, -- example behavior
+    },
+  })
+
+  vim.cmd("colorscheme rose-pine")
+  vim.cmd("hi statusline guibg=NONE")
+end
 vim.g.rose_pine_variant = "main"
 require("rose-pine").setup({
     variant = vim.g.rose_pine_variant,
@@ -270,6 +310,12 @@ end
 
 -- map it to <leader>tc (you can change this)
 vim.api.nvim_set_keymap("n", "<leader>tc", "<cmd>lua ToggleRosePine()<CR>", { noremap = true, silent = true })
+apply_rose_pine_from_noctalia()
+local signal = vim.uv.new_signal()
+
+signal:start("sigusr1", vim.schedule_wrap(function()
+  apply_rose_pine_from_noctalia()
+end))
 
 require("luasnip.loaders.from_vscode").lazy_load()
 require("blink.cmp").setup({
@@ -448,3 +494,5 @@ vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement under cursor", noremap = t
 --         },
 --     },
 -- }
+--
+
