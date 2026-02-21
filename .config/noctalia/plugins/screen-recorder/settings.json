@@ -10,7 +10,7 @@
   "colorRange": "limited",
   "showCursor": true,
   "copyToClipboard": false,
-  "audioSource": "default_output",
+  "audioSource": "both",
   "videoSource": "portal",
   "resolution": "original"
 }

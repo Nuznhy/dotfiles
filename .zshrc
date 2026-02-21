@@ -1,6 +1,7 @@
 autoload -Uz compinit
 compinit
 eval "$(rbenv init - zsh)"
+export GTK_USE_PORTAL=1
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -167,3 +168,9 @@ export PATH="$PATH:/home/nuznhy/.lmstudio/bin"
 
 
 export PATH=$PATH:/home/nuznhy/.spicetify
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/nuznhy/google-cloud-sdk/path.zsh.inc' ]; then . '/home/nuznhy/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/nuznhy/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/nuznhy/google-cloud-sdk/completion.zsh.inc'; fi

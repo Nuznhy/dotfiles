@@ -50,7 +50,7 @@
         "barType": "simple",
         "capsuleColorKey": "none",
         "capsuleOpacity": 1,
-        "density": "comfortable",
+        "density": "spacious",
         "displayMode": "always_visible",
         "floating": false,
         "frameRadius": 12,
@@ -104,11 +104,12 @@
                     "blacklist": [
                     ],
                     "chevronColor": "none",
-                    "colorizeIcons": false,
+                    "colorizeIcons": true,
                     "drawerEnabled": true,
                     "hidePassive": false,
                     "id": "Tray",
                     "pinned": [
+                        "steam"
                     ]
                 },
                 {
@@ -144,7 +145,7 @@
             "right": [
                 {
                     "compactMode": false,
-                    "diskPath": "/",
+                    "diskPath": "/home",
                     "iconColor": "none",
                     "id": "SystemMonitor",
                     "showCpuFreq": false,
@@ -179,6 +180,16 @@
                 {
                     "id": "Spacer",
                     "width": 2
+                },
+                {
+                    "defaultSettings": {
+                        "enableTodoIntegration": false,
+                        "notecardsEnabled": true,
+                        "pincardsEnabled": true,
+                        "position": "Bottom",
+                        "showCloseButton": false
+                    },
+                    "id": "plugin:clipper"
                 },
                 {
                     "defaultSettings": {
@@ -227,21 +238,16 @@
                 },
                 {
                     "colorizeDistroLogo": false,
-                    "colorizeSystemIcon": "none",
-                    "customIconPath": "",
-                    "enableColorization": false,
+                    "colorizeSystemIcon": "error",
+                    "customIconPath": "/home/nuznhy/wallpaper/fern.png",
+                    "enableColorization": true,
                     "icon": "noctalia",
                     "id": "ControlCenter",
-                    "useDistroLogo": false
+                    "useDistroLogo": true
                 },
                 {
                     "iconColor": "error",
                     "id": "SessionMenu"
-                },
-                {
-                    "defaultSettings": {
-                    },
-                    "id": "plugin:kde-connect"
                 }
             ]
         }
