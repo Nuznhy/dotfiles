@@ -1,13 +1,4 @@
 vim.lsp.config('vtsls', {
-    settings = {
-        vtsls = {
-            tsserver = {
-                globalPlugins = {
-                    vue_plugin,
-                },
-            },
-        },
-    },
     filetypes = { 'vue' },
 })
 
