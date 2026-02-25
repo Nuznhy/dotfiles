@@ -1,4 +1,3 @@
--- sync theme with noctalia-shell --
 local function get_noctalia_dark_mode()
   local result = vim.system(
     { "qs", "-c", "noctalia-shell", "ipc", "call", "state", "all" },
@@ -37,6 +36,7 @@ local function apply_rose_pine_from_noctalia()
   vim.cmd("colorscheme rose-pine")
   vim.cmd("hi statusline guibg=NONE")
 end
+
 vim.g.rose_pine_variant = "main"
 require("rose-pine").setup({
     variant = vim.g.rose_pine_variant,
@@ -52,21 +52,3 @@ local signal = vim.uv.new_signal()
 signal:start("sigusr1", vim.schedule_wrap(function()
   apply_rose_pine_from_noctalia()
 end))
---
-
--- move help windows to Vertical split --
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "help",
-  callback = function()
-    vim.cmd("wincmd L")
-  end,
-})
-
-
--- autoformat on save --
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*",
-  callback = function(args)
-    require("conform").format({ bufnr = args.buf })
-  end,
-})
