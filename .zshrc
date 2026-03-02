@@ -1,5 +1,23 @@
 autoload -Uz compinit
 compinit
+
+# 1. Define the agent file path clearly
+AUTH_FILE="$HOME/.keychain/${HOST:-$(hostname)}-sh"
+
+# 2. Extract keys from your SSH config (The "Magic" part)
+if [[ -f ~/.ssh/config ]]; then
+    KEYS=($(grep -i '^[[:space:]]*IdentityFile' ~/.ssh/config | \
+            grep -ivE 'remomedi|remomedapo' | \
+            awk '{print $2}' | sed "s|^~|$HOME|" | sort -u))
+fi
+
+# 3. Start Keychain
+# --eval makes it print the shell variables directly
+/usr/bin/keychain --nogui --quiet $KEYS
+
+# 4. CRITICAL: Source the file to tell THIS terminal where the agent is
+[[ -f $AUTH_FILE ]] && source $AUTH_FILE
+
 eval "$(rbenv init - zsh)"
 export GTK_USE_PORTAL=1
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
