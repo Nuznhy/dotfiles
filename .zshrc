@@ -177,3 +177,42 @@ if [ -f '/home/nuznhy/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/nuzn
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
+
+
+note() {
+    local notes_dir="$HOME/notes"
+    mkdir -p "$notes_dir"
+
+    local result=$(find "$notes_dir" -maxdepth 1 -type f -name "*.md" -printf "%f\n" | 
+             fzf --prompt="Note > " \
+                 --preview="bat --style=plain --color=always $notes_dir/{}" \
+                 --print-query \
+                 --header="Find note or create new")
+
+    local query=$(echo "$result" | sed -n '1p')
+    local selected=$(echo "$result" | sed -n '2p')
+
+    local file
+    if [ -n "$selected" ]; then
+        file="$notes_dir/$selected"
+    elif [ -n "$query" ]; then
+        [[ "$query" != *.md ]] && local name="$query.md" || local name="$query"
+        file="$notes_dir/$name"
+        [ ! -f "$file" ] && echo "# ${query%.md}" > "$file"
+    else
+        return 0
+    fi
+
+    nvim "$file"
+}
+
+note-search() {
+    local notes_dir="$HOME/notes"
+    local file_line=$(rg --column --line-number --no-heading --color=always --smart-case "" "$notes_dir" | \
+        fzf --ansi \
+            --delimiter : \
+            --preview 'bat --style=plain --color=always --highlight-line {2} {1}' \
+            --preview-window 'up:60%')
+    
+    [ -n "$file_line" ] && nvim $(echo "$file_line" | cut -d: -f1) +$(echo "$file_line" | cut -d: -f2)
+}

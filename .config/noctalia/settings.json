@@ -176,6 +176,9 @@
                     "width": 2
                 },
                 {
+                    "id": "plugin:sticky-notes"
+                },
+                {
                     "defaultSettings": {
                         "enableTodoIntegration": false,
                         "notecardsEnabled": true,
@@ -270,7 +273,7 @@
         ]
     },
     "colorSchemes": {
-        "darkMode": false,
+        "darkMode": true,
         "generationMethod": "rainbow",
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
