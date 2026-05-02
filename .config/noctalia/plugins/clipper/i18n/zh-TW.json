@@ -90,6 +90,18 @@
     "clear-all-notes": "Clear All Notes",
     "show-close-button": "Show Close Button",
     "show-close-button-desc": "Display an X button at the top-right corner to close the panel",
+    "fullscreen-mode": "Fullscreen Mode",
+    "fullscreen-mode-desc": "Expand the clipboard panel to fill the entire screen",
+    "hide-panel-background": "Hide Panel Background",
+    "hide-panel-background-desc": "Remove background from panel containers. Note: Pin Cards and Note Cards work best with background enabled.",
+    "auto-paste-section": "Auto-Paste",
+    "auto-paste": "Auto-Paste on Click",
+    "auto-paste-desc": "Automatically paste clipboard item into focused window after selecting",
+    "auto-paste-warning": "wtype is required for auto-paste. Install with: sudo pacman -S wtype",
+    "auto-paste-rmb": "Right-Click Only",
+    "auto-paste-rmb-desc": "Use right-click for auto-paste; left-click copies to clipboard without pasting",
+    "auto-paste-delay": "Paste Delay",
+    "auto-paste-delay-desc": "Delay before pasting (ms). Increase if focus follows cursor is enabled in your compositor.",
     "appearance": "卡片外觀",
     "card-type": "卡片類型",
     "card-type-desc": "選擇要自訂的卡片類型",
@@ -101,6 +113,10 @@
     "separator-color-desc": "標題與內容之間的線條",
     "fg-color": "前景顏色",
     "fg-color-desc": "標題、圖示和文字內容顏色",
-    "reset-defaults": "重設為預設值"
+    "reset-defaults": "重設為預設值",
+    "panel-width": "面板寬度",
+    "panel-width-desc": "面板的像素寬度（僅在全螢幕模式關閉時有效）",
+    "panel-height": "面板高度",
+    "panel-height-desc": "面板的像素高度。設為 0 則自動高度（僅在全螢幕模式關閉時有效）"
   }
 }

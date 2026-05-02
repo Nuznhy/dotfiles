@@ -90,6 +90,18 @@
     "clear-all-notes": "Clear All Notes",
     "show-close-button": "Show Close Button",
     "show-close-button-desc": "Display an X button at the top-right corner to close the panel",
+    "fullscreen-mode": "Fullscreen Mode",
+    "fullscreen-mode-desc": "Expand the clipboard panel to fill the entire screen",
+    "hide-panel-background": "Hide Panel Background",
+    "hide-panel-background-desc": "Remove background from panel containers. Note: Pin Cards and Note Cards work best with background enabled.",
+    "auto-paste-section": "Auto-Paste",
+    "auto-paste": "Auto-Paste on Click",
+    "auto-paste-desc": "Automatically paste clipboard item into focused window after selecting",
+    "auto-paste-warning": "wtype is required for auto-paste. Install with: sudo pacman -S wtype",
+    "auto-paste-rmb": "Right-Click Only",
+    "auto-paste-rmb-desc": "Use right-click for auto-paste; left-click copies to clipboard without pasting",
+    "auto-paste-delay": "Paste Delay",
+    "auto-paste-delay-desc": "Delay before pasting (ms). Increase if focus follows cursor is enabled in your compositor.",
     "appearance": "카드 모양",
     "card-type": "카드 유형",
     "card-type-desc": "사용자 지정할 카드 유형 선택",
@@ -101,6 +113,10 @@
     "separator-color-desc": "헤더와 콘텐츠 사이의 선",
     "fg-color": "전경색",
     "fg-color-desc": "제목, 아이콘 및 텍스트 콘텐츠 색상",
-    "reset-defaults": "기본값으로 재설정"
+    "reset-defaults": "기본값으로 재설정",
+    "panel-width": "패널 너비",
+    "panel-width-desc": "패널의 너비(픽셀 단위, 전체 화면 모드가 비활성화된 경우에만 적용)",
+    "panel-height": "패널 높이",
+    "panel-height-desc": "패널의 높이(픽셀 단위). 0으로 설정하면 자동 높이(전체 화면 모드가 비활성화된 경우에만 적용)"
   }
 }

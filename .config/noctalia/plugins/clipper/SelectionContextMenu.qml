@@ -14,9 +14,9 @@ PanelWindow {
     required property ShellScreen screen
     property var pluginApi: null
     property var menuItems: []
-    
+
     signal itemSelected(string action)
-    signal cancelled()
+    signal cancelled
 
     anchors.top: true
     anchors.left: true
@@ -60,15 +60,15 @@ PanelWindow {
                     const data = JSON.parse(cursorStdout.text);
                     root.cursorX = data.x || 0;
                     root.cursorY = data.y || 0;
-                    
+
                     // Position menu at cursor
                     anchorPoint.x = root.cursorX;
                     anchorPoint.y = root.cursorY;
                     contextMenu.model = root.menuItems;
                     contextMenu.anchorItem = anchorPoint;
                     contextMenu.visible = true;
-                } catch(e) {
-                    ToastService.showError(pluginApi?.tr("toast.failed-to-get-cursor-position") || "Failed to get cursor position");
+                } catch (e) {
+                    ToastService.showError(pluginApi?.tr("toast.failed-to-get-cursor-position"));
                     root.close();
                 }
             } else {

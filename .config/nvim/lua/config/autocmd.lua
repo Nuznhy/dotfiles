@@ -59,6 +59,8 @@ else
     vim.cmd("colorscheme rose-pine")
 end
 
+-- vim.cmd("colorscheme min-theme-dark")
+
 -- move help windows to Vertical split --
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "help",

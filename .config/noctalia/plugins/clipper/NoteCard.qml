@@ -15,32 +15,32 @@ Rectangle {
 
     // Color schemes
     property var colorSchemes: ({
-        "yellow": {
-            bg: "#FFF9C4",
-            fg: "#000000",
-            header: "#FDD835"
-        },
-        "pink": {
-            bg: "#FCE4EC",
-            fg: "#000000",
-            header: "#F06292"
-        },
-        "blue": {
-            bg: "#E3F2FD",
-            fg: "#000000",
-            header: "#42A5F5"
-        },
-        "green": {
-            bg: "#E8F5E9",
-            fg: "#000000",
-            header: "#66BB6A"
-        },
-        "purple": {
-            bg: "#F3E5F5",
-            fg: "#000000",
-            header: "#AB47BC"
-        }
-    })
+            "yellow": {
+                bg: "#FFF9C4",
+                fg: "#000000",
+                header: "#FDD835"
+            },
+            "pink": {
+                bg: "#FCE4EC",
+                fg: "#000000",
+                header: "#F06292"
+            },
+            "blue": {
+                bg: "#E3F2FD",
+                fg: "#000000",
+                header: "#42A5F5"
+            },
+            "green": {
+                bg: "#E8F5E9",
+                fg: "#000000",
+                header: "#66BB6A"
+            },
+            "purple": {
+                bg: "#F3E5F5",
+                fg: "#000000",
+                header: "#AB47BC"
+            }
+        })
 
     // Constants for sizing
     readonly property int minHeight: 200
@@ -84,7 +84,6 @@ Rectangle {
             topRightRadius: Style.radiusM
             bottomLeftRadius: 0
             bottomRightRadius: 0
-
 
             RowLayout {
                 id: headerContent
@@ -132,10 +131,10 @@ Rectangle {
 
                         onReleased: {
                             if (root.pluginApi && root.pluginApi.mainInstance) {
-                                root.pluginApi.mainInstance.updateNoteCard(
-                                    root.note.id,
-                                    { x: root.x, y: root.y }
-                                );
+                                root.pluginApi.mainInstance.updateNoteCard(root.note.id, {
+                                    x: root.x,
+                                    y: root.y
+                                });
                             }
                         }
                     }
@@ -145,7 +144,7 @@ Rectangle {
                 Item {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    Layout.minimumWidth: 150
+                    Layout.minimumWidth: 100
 
                     TextInput {
                         id: titleInput
@@ -168,7 +167,7 @@ Rectangle {
                             anchors.fill: parent
                             verticalAlignment: Text.AlignVCenter
                             horizontalAlignment: Text.AlignLeft
-                            text: pluginApi?.tr("notecards.untitled-placeholder") || "Untitled"
+                            text: pluginApi?.tr("notecards.untitled-placeholder")
                             color: parent.color
                             opacity: 0.5
                             visible: titleInput.text.length === 0
@@ -186,18 +185,40 @@ Rectangle {
                             titleInput.focus = false;
                         }
                     }
-
                 }
+                
                 NIconButton {
-                    icon: "palette"
-                    tooltipText: pluginApi?.tr("notecards.change-color") || "Change Color"
+                    icon: note && note.isPrivate ? "eye-off" : "eye"
+                    tooltipText: pluginApi?.tr("notecards.toggle-privacy-mode")
                     colorFg: {
                         const noteColor = note ? note.color : "yellow";
                         const scheme = colorSchemes[noteColor];
                         return scheme ? scheme.fg : "#000000";
                     }
                     colorBg: "transparent"
-                    colorBgHover: Qt.rgba(0,0,0,0.1)
+                    colorBgHover: Qt.rgba(0, 0, 0, 0.1)
+                    colorBorder: "transparent"
+                    colorBorderHover: "transparent"
+
+                    onClicked: {
+                        if (root.pluginApi && root.pluginApi.mainInstance) {
+                            root.pluginApi.mainInstance.updateNoteCard(root.note.id, {
+                                isPrivate: !(root.note && root.note.isPrivate)
+                            });
+                        }
+                    }
+                }
+
+                NIconButton {
+                    icon: "palette"
+                    tooltipText: pluginApi?.tr("notecards.change-color")
+                    colorFg: {
+                        const noteColor = note ? note.color : "yellow";
+                        const scheme = colorSchemes[noteColor];
+                        return scheme ? scheme.fg : "#000000";
+                    }
+                    colorBg: "transparent"
+                    colorBgHover: Qt.rgba(0, 0, 0, 0.1)
                     colorBorder: "transparent"
                     colorBorderHover: "transparent"
 
@@ -209,24 +230,23 @@ Rectangle {
                         const nextColor = colors[nextIndex];
 
                         if (root.pluginApi && root.pluginApi.mainInstance) {
-                            root.pluginApi.mainInstance.updateNoteCard(
-                                root.note.id,
-                                { color: nextColor }
-                            );
+                            root.pluginApi.mainInstance.updateNoteCard(root.note.id, {
+                                color: nextColor
+                            });
                         }
                     }
                 }
 
                 NIconButton {
                     icon: "file-export"
-                    tooltipText: pluginApi?.tr("notecards.export") || "Export to .txt"
+                    tooltipText: pluginApi?.tr("notecards.export")
                     colorFg: {
                         const noteColor = note ? note.color : "yellow";
                         const scheme = colorSchemes[noteColor];
                         return scheme ? scheme.fg : "#000000";
                     }
                     colorBg: "transparent"
-                    colorBgHover: Qt.rgba(0,0,0,0.1)
+                    colorBgHover: Qt.rgba(0, 0, 0, 0.1)
                     colorBorder: "transparent"
                     colorBorderHover: "transparent"
 
@@ -239,14 +259,14 @@ Rectangle {
 
                 NIconButton {
                     icon: "trash"
-                    tooltipText: pluginApi?.tr("notecards.delete") || "Delete Note"
+                    tooltipText: pluginApi?.tr("notecards.delete")
                     colorFg: {
                         const noteColor = note ? note.color : "yellow";
                         const scheme = colorSchemes[noteColor];
                         return scheme ? scheme.fg : "#000000";
                     }
                     colorBg: "transparent"
-                    colorBgHover: Qt.rgba(0,0,0,0.1)
+                    colorBgHover: Qt.rgba(0, 0, 0, 0.1)
                     colorBorder: "transparent"
                     colorBorderHover: "transparent"
 
@@ -266,8 +286,11 @@ Rectangle {
             height: 1
             gradient: Gradient {
                 orientation: Gradient.Horizontal
-                GradientStop { position: 0.0; color: "transparent" }
-                GradientStop { 
+                GradientStop {
+                    position: 0.0
+                    color: "transparent"
+                }
+                GradientStop {
                     position: 0.5
                     color: {
                         const noteColor = note ? note.color : "yellow";
@@ -275,7 +298,10 @@ Rectangle {
                         return scheme ? scheme.header : "#FDD835";
                     }
                 }
-                GradientStop { position: 1.0; color: "transparent" }
+                GradientStop {
+                    position: 1.0
+                    color: "transparent"
+                }
             }
         }
 
@@ -298,12 +324,17 @@ Rectangle {
                     wrapMode: TextArea.Wrap
                     selectByMouse: true
                     color: {
+                        if (note.isPrivate && !textArea.activeFocus) {
+                            return "transparent"
+                        }
                         const noteColor = note ? note.color : "yellow";
                         const scheme = colorSchemes[noteColor];
                         return scheme ? scheme.fg : "#000000";
                     }
                     font.pixelSize: 14
-                    background: Rectangle { color: "transparent" }
+                    background: Rectangle {
+                        color: "transparent"
+                    }
 
                     Component.onCompleted: {
                         if (note) {
@@ -320,39 +351,56 @@ Rectangle {
                     }
                 }
             }
+
+            Rectangle {
+                enabled: false
+                opacity: 1.0
+                visible: note.isPrivate && !textArea.activeFocus
+                anchors.fill: parent
+                color: "transparent"
+                
+
+                NIcon {
+                    anchors.centerIn: parent
+                    icon: "password"
+                    pointSize: 45
+                    color: {
+                        const noteColor = note ? note.color : "yellow";
+                        const scheme = colorSchemes[noteColor];
+                        return scheme ? scheme.fg : "#000000";
+                    }
+                }
+            }
         }
     }
 
     // Check if card needs to be expanded to fit content
     function checkAndExpandHeight() {
-        if (!textArea || !note) return;
-        
+        if (!textArea || !note)
+            return;
+
         const contentHeight = textArea.contentHeight;
         const availableHeight = root.height - root.headerHeight - root.margins - 1; // 1 = separator
-        
+
         // If content doesn't fit, expand card
         if (contentHeight > availableHeight) {
             let newHeight = root.headerHeight + root.margins + contentHeight + 1;
             newHeight = Math.min(newHeight, root.maxHeight);
-            
+
             if (newHeight !== root.height && root.pluginApi && root.pluginApi.mainInstance) {
-                root.pluginApi.mainInstance.updateNoteCard(
-                    root.note.id,
-                    { height: newHeight }
-                );
+                root.pluginApi.mainInstance.updateNoteCard(root.note.id, {
+                    height: newHeight
+                });
             }
         }
     }
 
     function syncChanges() {
         if (root.pluginApi && root.pluginApi.mainInstance && note) {
-            root.pluginApi.mainInstance.updateNoteCard(
-                note.id,
-                {
-                    title: titleInput.text,
-                    content: textArea.text
-                }
-            );
+            root.pluginApi.mainInstance.updateNoteCard(note.id, {
+                title: titleInput.text,
+                content: textArea.text
+            });
         }
     }
     Component.onDestruction: {

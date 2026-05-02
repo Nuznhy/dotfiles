@@ -3,7 +3,7 @@
   "logo": {
     "source": "~/marin.png",
     "type": "kitty-direct",
-    "width": 25,
+    "width": 35,
     "height": 20
   },
   "display": {

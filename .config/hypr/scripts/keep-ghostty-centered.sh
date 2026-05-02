@@ -6,19 +6,22 @@ CLASS="com.mitchellh.ghostty"
 
 while true; do
     # Get all windows on Workspace 1 in JSON
-    DATA=$(hyprctl clients -j | jq "[.[] | select(.workspace.id == $WS)]")
+    DATA=$(hyprctl clients -j 2>/dev/null)
+
+    # skip if output invalid
+    echo "$DATA" | jq empty 2>/dev/null || { sleep 1; continue; }
+
+    DATA=$(echo "$DATA" | jq "[.[] | select(.workspace.id == $WS)]")
     COUNT=$(echo "$DATA" | jq "length")
 
     # CASE 1: Exactly one window on Workspace 1
     if [ "$COUNT" -eq 1 ]; then
-        IS_GHOSTTY=$(echo "$DATA" | jq -r ".[0].class")
-        IS_FLOATING=$(echo "$DATA" | jq -r ".[0].floating")
+        CLASSNAME=$(echo "$DATA" | jq -r ".[0].class")
         ADDR=$(echo "$DATA" | jq -r ".[0].address")
 
-        if [ "$IS_GHOSTTY" == "$CLASS" ] && [ "$IS_FLOATING" == "false" ]; then
-            # Apply floating, specific size, and center
+        if [ "$CLASSNAME" == "$CLASS" ]; then
             hyprctl dispatch setfloating address:$ADDR
-            hyprctl dispatch resizewindowpixel exact 80% 95%,address:$ADDR
+            hyprctl dispatch resizewindowpixel exact 80% 95% address:$ADDR
             hyprctl dispatch centerwindow address:$ADDR
         fi
 
@@ -33,5 +36,5 @@ while true; do
         done
     fi
 
-    sleep 0.5
+    sleep 1
 done

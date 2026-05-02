@@ -13,7 +13,7 @@ vim.lsp.config('vue_ls', {
         local path = vim.api.nvim_buf_get_name(bufnr)
 
         -- find a vite.config.ts or vite.config.js up the directory tree
-        local root = vim.fs.find({ "vite.config.ts", "vite.config.js" }, {
+        local root = vim.fs.find({ "vite.config.ts", "vite.config.js", "nuxt.config.ts", "nuxt.config.js" }, {
             upward = true,
             path = vim.fn.fnamemodify(path, ":p:h"),
         })[1]
@@ -40,7 +40,7 @@ vim.lsp.config('vtsls', {
         local path = vim.api.nvim_buf_get_name(bufnr)
 
         -- find a vite.config.ts or vite.config.js up the directory tree
-        local root = vim.fs.find({ "vite.config.ts", "vite.config.js" }, {
+        local root = vim.fs.find({ "vite.config.ts", "vite.config.js", "nuxt.config.ts", "nuxt.config.js" }, {
             upward = true,
             path = vim.fn.fnamemodify(path, ":p:h"),
         })[1]

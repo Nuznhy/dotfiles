@@ -17,6 +17,9 @@
         "qwen3-coder:latest": {
             "name": "qwen3-coder:latest"
         },
+        "qwen3.5:27b": {
+            "name": "qwen3.5:27b"
+        },
         "qwen2.5-coder:32b": {
             "name": "qwen2.5-coder:32b"
         }

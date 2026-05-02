@@ -1,16 +1,27 @@
 @import "default"
 
 * {
-	bg: #191724;
-	cur: #2a273f;
-	fgd: #e0def4;
-	cmt: #6e6a86;
-	cya: #9ccfd8;
-	grn: #3e8fb0;
-	ora: #ea9a97;
-	pur: #c4a7e7;
-	red: #eb6f92;
-	yel: #f6c177;
+bg: #191724;
+cur: #2a273f;
+fgd: #e0def4;
+cmt: #6e6a86;
+cya: #9ccfd8;
+grn: #3e8fb0;
+ora: #ea9a97;
+pur: #c4a7e7;
+red: #eb6f92;
+yel: #f6c177;
+
+    //bg: #1d1b1d;
+//cur: #262427;
+//fgd: #e1e2d5;
+//cmt: #262427;
+//cya: #04a6c2;
+//grn: #3DCC61;
+//ora: #FFD400;
+//pur: #5a189a;
+//red: #D94A59;
+//yel: #F2E661;
 
 	font: "Cartograph CF 16";
 
@@ -23,7 +34,7 @@
 	selected-urgent-background: @urgent-background;
 	selected-active-background: @active-background;
 	separatorcolor: @active-background;
-	bordercolor: @pur;
+	bordercolor: @fgd;
 }
 
 #window {

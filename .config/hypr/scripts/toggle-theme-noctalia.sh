@@ -10,10 +10,10 @@ if [ "$CURRENT_STATE" = "true" ]; then
     # Currently Dark -> Switch to Light
     qs -c noctalia-shell ipc call darkMode setLight
     pkill -USR1 nvim
-    qs -c noctalia-shell ipc call wallpaper set "$LIGHT_WALLPAPER" "DP-2"
+    qs -c noctalia-shell ipc call wallpaper set "$LIGHT_WALLPAPER" "DP-1"
 else
     # Currently Light -> Switch to Dark
     qs -c noctalia-shell ipc call darkMode setDark
     pkill -USR1 nvim
-    qs -c noctalia-shell ipc call wallpaper set "$DARK_WALLPAPER" "DP-2"
+    qs -c noctalia-shell ipc call wallpaper set "$DARK_WALLPAPER" "DP-1"
 fi

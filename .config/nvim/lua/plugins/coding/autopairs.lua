@@ -11,7 +11,6 @@ return {
   -- build = 'nix run .#build-plugin',
 
   --- @module 'blink.pairs'
-  --- @type blink.pairs.Config
   opts = {
     mappings = {
       -- you can call require("blink.pairs.mappings").enable()

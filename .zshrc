@@ -1,5 +1,6 @@
 autoload -Uz compinit
 compinit
+POWERLEVEL9K_DISABLE_GITSTATUS=true
 
 # 1. Define the agent file path clearly
 AUTH_FILE="$HOME/.keychain/${HOST:-$(hostname)}-sh"
@@ -162,6 +163,7 @@ alias gfa="git fetch --all"
 alias ls='eza --icons'
 alias la='eza -l --icons --sort=type'
 alias tree='eza --tree --icons'
+alias fastfetch="fastfetch-random"
 # To customize prompt, run p10k configure or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -196,10 +198,14 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
 
-
 note() {
     local notes_dir="$HOME/notes"
     mkdir -p "$notes_dir"
+
+    # /usr/bin/rsync -avzu \
+    # -e "ssh -i $HOME/.ssh/id_home_server -o IdentitiesOnly=yes" \
+    # nuznhy@home.server:~/notes/ \
+    # "$notes_dir/"
 
     local result=$(find "$notes_dir" -maxdepth 1 -type f -name "*.md" -printf "%f\n" | 
              fzf --prompt="Note > " \
@@ -226,6 +232,12 @@ note() {
 
 note-search() {
     local notes_dir="$HOME/notes"
+
+    # /usr/bin/rsync -avzu \
+    # -e "ssh -i $HOME/.ssh/id_home_server -o IdentitiesOnly=yes" \
+    # nuznhy@home.server:~/notes/ \
+    # "$notes_dir/"
+
     local file_line=$(rg --column --line-number --no-heading --color=always --smart-case "" "$notes_dir" | \
         fzf --ansi \
             --delimiter : \

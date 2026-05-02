@@ -21,6 +21,7 @@ return {
             default = { 'lsp', 'path', 'buffer', 'snippets' },
         },
         completion = {
+            list = { max_items = 50 },
             trigger = { prefetch_on_insert = false },
             documentation = { auto_show = true, auto_show_delay_ms = 500 },
             menu = {

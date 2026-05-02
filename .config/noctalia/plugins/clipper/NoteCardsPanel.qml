@@ -24,11 +24,11 @@ Item {
     // Background MouseArea - ALWAYS closes panel on click
     MouseArea {
         anchors.fill: parent
-        z: -1  // Behind everything
+        z: -1
 
         onClicked: {
-            // Close panel when clicking on background
-            if (root.pluginApi && root.screen) {
+            const closeButtonOn = root.pluginApi?.pluginSettings?.showCloseButton ?? false;
+            if (!closeButtonOn && root.pluginApi && root.screen) {
                 root.pluginApi.closePanel(root.screen);
             }
         }
@@ -39,8 +39,7 @@ Item {
         anchors.centerIn: parent
         width: 400
         height: 200
-        visible: !(root.pluginApi && root.pluginApi.mainInstance && root.pluginApi.mainInstance.noteCards) ||
-                 root.pluginApi.mainInstance.noteCards.length === 0
+        visible: !(root.pluginApi && root.pluginApi.mainInstance && root.pluginApi.mainInstance.noteCards) || root.pluginApi.mainInstance.noteCards.length === 0
 
         ColumnLayout {
             anchors.centerIn: parent
@@ -56,7 +55,7 @@ Item {
 
             NText {
                 Layout.alignment: Qt.AlignHCenter
-                text: pluginApi?.tr("notecards.empty-state") || "No notes yet"
+                text: pluginApi?.tr("notecards.empty-state")
                 font.pointSize: Style.fontSizeL
                 font.bold: true
                 color: Color.mOnSurfaceVariant
@@ -64,7 +63,7 @@ Item {
 
             NText {
                 Layout.alignment: Qt.AlignHCenter
-                text: pluginApi?.tr("notecards.empty-hint") || "Click the button below to create your first note"
+                text: pluginApi?.tr("notecards.empty-hint")
                 font.pointSize: Style.fontSizeM
                 color: Color.mOnSurfaceVariant
                 opacity: 0.7
@@ -73,7 +72,7 @@ Item {
             NButton {
                 Layout.alignment: Qt.AlignHCenter
                 Layout.topMargin: 16
-                text: pluginApi?.tr("notecards.create-note") || "Create Note"
+                text: pluginApi?.tr("notecards.create-note")
                 icon: "add"
 
                 onClicked: {
@@ -98,7 +97,10 @@ Item {
         if (root.pluginApi && root.pluginApi.mainInstance) {
             const notes = root.pluginApi.mainInstance.noteCards || [];
             for (let i = 0; i < notes.length; i++) {
-                noteCardsModel.append({"noteData": notes[i], "noteIdx": i});
+                noteCardsModel.append({
+                    "noteData": notes[i],
+                    "noteIdx": i
+                });
             }
             lastRevision = root.pluginApi.mainInstance.noteCardsRevision || 0;
         }
@@ -159,7 +161,7 @@ Item {
                 width: 28
                 height: 28
                 icon: "add"
-                tooltipText: pluginApi?.tr("notecards.create-note") || "Create Note"
+                tooltipText: pluginApi?.tr("notecards.create-note")
                 colorBg: Color.mPrimary
                 colorFg: Color.mOnPrimary
                 colorBgHover: Qt.lighter(Color.mPrimary, 1.2)
@@ -171,7 +173,7 @@ Item {
                         const max = root.pluginApi.mainInstance.maxNoteCards || 20;
 
                         if (count >= max) {
-                            ToastService.showWarning((pluginApi?.tr("toast.max-notes") || "Maximum {max} notes reached").replace("{max}", max));
+                            ToastService.showWarning(pluginApi?.tr("toast.max-notes").replace("{max}", max));
                         } else {
                             root.pluginApi.mainInstance.createNoteCard("");
                         }
@@ -215,5 +217,4 @@ Item {
         revisionTimer.stop();
         noteCardsModel.clear();
     }
-
 }

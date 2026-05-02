@@ -108,6 +108,17 @@ Item {
             }
 
             NButton {
+              text: pluginApi?.tr("panel.header.export_button")
+              icon: "download"
+              fontSize: Style.fontSizeS
+              onClicked: {
+                if (mainInstance) {
+                  mainInstance.doExportTodos();
+                }
+              }
+            }
+
+            NButton {
               enabled: (pluginApi.pluginSettings.completedCount > 0)
               text: pluginApi?.tr("panel.header.clear_completed_button")
               icon: "trash"
@@ -1178,10 +1189,10 @@ Item {
               NButton {
                 text: detailDialog.todoDetails.length > 0 ? pluginApi?.tr("panel.todo_details.button_edit_details") : pluginApi?.tr("panel.todo_details.button_add_details")
                 icon: "pencil"
-                backgroundColor: Color.mSurfaceVariant
-                textColor: Color.mOnSurface
+                backgroundColor: Color.mPrimary
+                textColor: Color.mOnPrimary
                 fontSize: Style.fontSizeS
-                outlined: true
+                visible: !detailsEditMode
                 onClicked: {
                   detailsEditMode = true;
                   Qt.callLater(function () {
@@ -1229,6 +1240,7 @@ Item {
               NButton {
                 text: pluginApi?.tr("panel.todo_details.button_save")
                 backgroundColor: Color.mPrimary
+                textColor: Color.mOnPrimary
                 onClicked: {
                   updateTodo(detailDialog.todoId, {
                                details: detailsTextArea.text
@@ -1240,7 +1252,8 @@ Item {
 
               NButton {
                 text: pluginApi?.tr("panel.todo_details.button_cancel")
-                backgroundColor: Color.mSurfaceVariant
+                backgroundColor: Color.mPrimary
+                textColor: Color.mOnPrimary
                 onClicked: {
                   detailsEditMode = false;
                 }

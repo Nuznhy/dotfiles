@@ -4,7 +4,7 @@ vim.lsp.config('ts_ls', {
     root_dir = function(bufnr, on_dir)
         local name = vim.api.nvim_buf_get_name(bufnr)
         -- find vite config up the tree
-        local is_vite = vim.fs.find({ "vite.config.ts", "vite.config.js" }, {
+        local is_vite = vim.fs.find({ "vite.config.ts", "vite.config.js", "nuxt.config.js", "nuxt.config.ts" }, {
             upward = true,
             path = vim.fs.dirname(name),
         })[1]
@@ -15,7 +15,7 @@ vim.lsp.config('ts_ls', {
         end
 
         -- otherwise, use package.json or tsconfig.json as root
-        local root = vim.fs.find({ "package.json", "tsconfig.json" }, {
+        local root = vim.fs.find({ "package.json", "tsconfig.json", "nuxt.config.js", "nuxt.config.ts" }, {
             upward = true,
             path = vim.fs.dirname(name),
         })[1]
