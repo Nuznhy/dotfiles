@@ -23,6 +23,7 @@
   "mason.nvim": { "branch": "main", "commit": "b03fb0f20bc1d43daf558cda981a2be22e73ac42" },
   "min-theme.nvim": { "branch": "main", "commit": "29fe6f031202619e6285789f47ce37ead5165b8d" },
   "mini.pick": { "branch": "main", "commit": "6b7974543b17cf2e294993fc3d8545a342258232" },
+  "minuet-ai.nvim": { "branch": "main", "commit": "7e696b717082e524286192ddaf397f709427f1a5" },
   "monokai-pro.nvim": { "branch": "master", "commit": "d8884d4473667c48bd17a68d08383d38839136a3" },
   "nightfox": { "branch": "main", "commit": "ba47d4b4c5ec308718641ba7402c143836f35aa9" },
   "noice.nvim": { "branch": "main", "commit": "7bfd942445fb63089b59f97ca487d605e715f155" },

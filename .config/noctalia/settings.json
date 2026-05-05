@@ -718,10 +718,6 @@
             },
             {
                 "enabled": true,
-                "id": "telegram"
-            },
-            {
-                "enabled": true,
                 "id": "gtk"
             },
             {
@@ -747,10 +743,6 @@
             {
                 "enabled": true,
                 "id": "discord"
-            },
-            {
-                "enabled": true,
-                "id": "hyprland"
             }
         ],
         "enableUserTheming": false
@@ -865,7 +857,7 @@
         "wallhavenCategories": "111",
         "wallhavenOrder": "desc",
         "wallhavenPurity": "000",
-        "wallhavenQuery": "",
+        "wallhavenQuery": "Lain",
         "wallhavenRatios": "",
         "wallhavenResolutionHeight": "",
         "wallhavenResolutionMode": "atleast",

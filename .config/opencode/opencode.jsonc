@@ -5,11 +5,11 @@
       "npm": "@ai-sdk/openai-compatible",
       "name": "Ollama (local)",
       "options": {
-        "baseURL": "http://localhost:11434/v1",
+        "baseURL": "http://localhost:11434/v1"
       },
       "models": {
         "gpt-oss:20b": {
-          "name": "gpt-oss:20b",
+          "name": "gpt-oss:20b"
         },
         "devstral:latest": {
             "name": "devstral:latest"
@@ -22,6 +22,12 @@
         },
         "qwen2.5-coder:32b": {
             "name": "qwen2.5-coder:32b"
+        },
+        "qwen2.5-coder:14b": {
+            "name": "qwen2.5-coder:14b"
+        },
+        "codellama:13b": {
+            "name": "codellama13:b"
         }
       }
     },

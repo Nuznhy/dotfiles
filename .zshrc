@@ -164,6 +164,7 @@ alias ls='eza --icons'
 alias la='eza -l --icons --sort=type'
 alias tree='eza --tree --icons'
 alias fastfetch="fastfetch-random"
+alias hyprconf="vim ~/.config/hypr"
 # To customize prompt, run p10k configure or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
