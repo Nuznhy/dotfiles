@@ -4,7 +4,7 @@
   "alpha-nvim": { "branch": "main", "commit": "6c6a89d5b068b5251c8bdf0dd57bb921bcfeeb09" },
   "auto-save.nvim": { "branch": "main", "commit": "979b6c82f60cfa80f4cf437d77446d0ded0addf0" },
   "ayu": { "branch": "master", "commit": "e5a9f0fa2918d6b5f57c21b3ac014314ee5e41c8" },
-  "base16-nvim": { "branch": "master", "commit": "4a6ef31745f851e11424a12b63fb3d2a80b2916c" },
+  "base16-nvim": { "branch": "master", "commit": "23e5128eb5f629c29532c24a1e733cbe019f05bb" },
   "blink.cmp": { "branch": "main", "commit": "78336bc89ee5365633bcf754d93df01678b5c08f" },
   "blink.download": { "branch": "main", "commit": "a459c8fbf51359902971874b5ebe05f6602db8b4" },
   "blink.pairs": { "branch": "main", "commit": "4e43012356d33a26f69eae475f746fbe9f325f44" },
@@ -48,5 +48,6 @@
   "telescope.nvim": { "branch": "master", "commit": "5255aa27c422de944791318024167ad5d40aad20" },
   "toggleterm.nvim": { "branch": "main", "commit": "9a88eae817ef395952e08650b3283726786fb5fb" },
   "tokyonight.nvim": { "branch": "main", "commit": "5da1b76e64daf4c5d410f06bcb6b9cb640da7dfd" },
+  "vscode.nvim": { "branch": "main", "commit": "aa1102a7e15195c9cca22730b09224a7f7745ba8" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" }
 }

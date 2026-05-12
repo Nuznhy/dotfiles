@@ -1,40 +1,50 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Target Settings
-WS="1"
+WS=1
 CLASS="com.mitchellh.ghostty"
+SLEEP_TIME=1
+
+dispatch_float() {
+    local addr="$1"
+
+    hyprctl dispatch "hl.dsp.window.float({ action = 'enable', window = 'address:${addr}' })" >/dev/null
+    hyprctl dispatch "hl.dsp.window.resize({ x = '80%', y = '95%', window = 'address:${addr}' })" >/dev/null
+    hyprctl dispatch "hl.dsp.window.center({ window = 'address:${addr}' })" >/dev/null
+}
+
+dispatch_tile() {
+    local addr="$1"
+
+    hyprctl dispatch "hl.dsp.window.float({ action = 'disable', window = 'address:${addr}' })" >/dev/null
+}
 
 while true; do
-    # Get all windows on Workspace 1 in JSON
-    DATA=$(hyprctl clients -j 2>/dev/null)
+    DATA="$(hyprctl clients -j 2>/dev/null)"
 
-    # skip if output invalid
-    echo "$DATA" | jq empty 2>/dev/null || { sleep 1; continue; }
+    echo "$DATA" | jq empty 2>/dev/null || {
+        sleep "$SLEEP_TIME"
+        continue
+    }
 
-    DATA=$(echo "$DATA" | jq "[.[] | select(.workspace.id == $WS)]")
-    COUNT=$(echo "$DATA" | jq "length")
+    DATA="$(echo "$DATA" | jq --argjson ws "$WS" '[.[] | select(.workspace.id == $ws)]')"
+    COUNT="$(echo "$DATA" | jq 'length')"
 
-    # CASE 1: Exactly one window on Workspace 1
     if [ "$COUNT" -eq 1 ]; then
-        CLASSNAME=$(echo "$DATA" | jq -r ".[0].class")
-        ADDR=$(echo "$DATA" | jq -r ".[0].address")
+        CLASSNAME="$(echo "$DATA" | jq -r '.[0].class')"
+        ADDR="$(echo "$DATA" | jq -r '.[0].address')"
+        IS_FLOATING="$(echo "$DATA" | jq -r '.[0].floating')"
 
-        if [ "$CLASSNAME" == "$CLASS" ]; then
-            hyprctl dispatch setfloating address:$ADDR
-            hyprctl dispatch resizewindowpixel exact 80% 95% address:$ADDR
-            hyprctl dispatch centerwindow address:$ADDR
+        if [ "$CLASSNAME" = "$CLASS" ]; then
+            dispatch_float "$ADDR"
         fi
 
-    # CASE 2: More than one window (Force Tiling)
     elif [ "$COUNT" -gt 1 ]; then
-        # Get addresses of all windows currently floating on Workspace 1
-        FLOATING_ADDRS=$(echo "$DATA" | jq -r ".[] | select(.floating == true) | .address")
-        
+        FLOATING_ADDRS="$(echo "$DATA" | jq -r '.[] | select(.floating == true) | .address')"
+
         for ADDR in $FLOATING_ADDRS; do
-            # Correct syntax: dispatch settiled to specific window address
-            hyprctl dispatch settiled address:$ADDR
+            dispatch_tile "$ADDR"
         done
     fi
 
-    sleep 1
+    sleep "$SLEEP_TIME"
 done

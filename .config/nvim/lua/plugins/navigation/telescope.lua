@@ -29,6 +29,9 @@ return {
             { '<leader>pf', telescope_builtin.find_files,                                                    {} },
             { '<C-p>',      telescope_builtin.git_files,                                                     {} },
             { '<leader>ps', function() telescope_builtin.grep_string({ search = vim.fn.input "Grep >" }) end },
+            { '<leader>fu', function()
+                telescope_builtin.lsp_references()
+            end }
         }
         return keymaps
     end

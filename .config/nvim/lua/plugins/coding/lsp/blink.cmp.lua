@@ -13,7 +13,6 @@ return {
         { 'brenoprata10/nvim-highlight-colors' }
     },
     version = '1.*',
-
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
@@ -26,24 +25,25 @@ return {
             },
         },
         sources = {
-            default = function()
-                local src = { 'lsp', 'path', 'buffer', 'snippets' }
-
-                if ollama_running() then
-                    table.insert(src, 'minuet')
-                end
-
-                return src
-            end,
-            providers = {
-                minuet = {
-                    name = 'minuet',
-                    module = 'minuet.blink',
-                    async = true,
-                    timeout_ms = 3000,
-                    score_offset = 50
-                },
-            },
+            default = { 'lsp', 'path', 'buffer', 'snippets' }
+            -- default = function()
+            --     local src = { 'lsp', 'path', 'buffer', 'snippets' }
+            --
+            --     if ollama_running() then
+            --         table.insert(src, 'minuet')
+            --     end
+            --
+            --     return src
+            -- end,
+            -- providers = {
+            --     minuet = {
+            --         name = 'minuet',
+            --         module = 'minuet.blink',
+            --         async = true,
+            --         timeout_ms = 3000,
+            --         score_offset = 50
+            --     },
+            -- },
         },
         completion = {
             list = { max_items = 50 },
@@ -83,7 +83,7 @@ return {
                                 end
                                 return highlight
                             end,
-                        },
+                        }
                     },
                 },
             }

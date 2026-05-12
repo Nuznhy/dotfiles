@@ -1,4 +1,13 @@
 vim.lsp.config('tailwindcss', {
+    filetypes = {
+        "html",
+        "css",
+        "scss",
+        "javascriptreact",
+        "typescriptreact",
+        "vue",
+        "svelte",
+    },
     settings = {
         tailwindCSS = {
             files = {

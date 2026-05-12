@@ -1,5 +1,16 @@
+local function ollama_available()
+  local handle = io.popen("curl -s http://localhost:11434/api/tags")
+  if not handle then return false end
+
+  local result = handle:read("*a")
+  handle:close()
+
+  return result and result ~= ""
+end
+
 return {
     'milanglacier/minuet-ai.nvim',
+    enabled = ollama_available(),
     config = function()
         require('minuet').setup {
             context_window = 512,
