@@ -17,26 +17,31 @@ hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 ------------------
 ---- MONITORS ----
 ------------------
-hl.monitor({
+local Mode = { DESKTOP = 1, TV = 2, }
+local applying = false
+local currentMode = Mode.DESKTOP
+
+local desktopMon = {
     output = "DP-1",
     mode = "3840x2160@240.02",
     position = "0x0",
     scale = "1.25",
     vrr = false,
     bitdepth = 10,
-})
+}
 
-hl.monitor({
+local microMon = {
     output = "DP-2",
     mode = "960x640",
     position = "0x1728",
     scale = "1",
-})
+}
 
-hl.monitor({
+local tvMon = {
+    mode = "3840x2160@60.0",
     output = "HDMI-A-1",
     disabled = true
-})
+}
 
 local terminal = "ghostty"
 local fileManager = "nautilus"
@@ -111,12 +116,12 @@ hl.config({
         blur             = {
             enabled                   = true,
             size                      = 5,
-            passes                    = 1,
+            passes                    = 2,
             xray                      = false,
             special                   = false,
             new_optimizations         = true,
             brightness                = 1,
-            noise                     = 0.8,
+            noise                     = 0.4,
             contrast                  = 0.8,
             vibrancy                  = 0.5,
             vibrancy_darkness         = 0.5,
@@ -218,7 +223,6 @@ hl.config({
     },
 })
 
-
 ---------------
 ---- INPUT ----
 ---------------
@@ -254,14 +258,55 @@ hl.device({
 })
 
 
+local function applyMonitors()
+    if applying then
+        return
+    end
+
+    applying = true
+    hl.notification.create({
+        icon = "ok",
+        timeout = 7500,
+        text = currentMode
+    })
+
+    if currentMode == Mode.DESKTOP then
+        tvMon.disabled = false
+        desktopMon.disabled = true
+        microMon.disabled = true
+        currentMode = Mode.TV
+    else
+        desktopMon.disabled = false
+        microMon.disabled = false
+        tvMon.disabled = true
+        currentMode = Mode.DESKTOP
+    end
+
+    -- update monitor config
+    hl.monitor(tvMon)
+    hl.monitor(desktopMon)
+    hl.monitor(microMon)
+
+    hl.notification.create({
+        icon = "ok",
+        timeout = 7500,
+        text = currentMode
+    })
+
+    applying = false
+end
+
+hl.on('hyprland.start', applyMonitors)
 ---------------------
 ---- KEYBINDINGS ----
 ---------------------
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
+hl.bind(mainMod .. " + SHIFT + F2", applyMonitors)
+
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
--- hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))

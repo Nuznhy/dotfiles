@@ -26,8 +26,8 @@ return {
     keys = function()
         local telescope_builtin = require "telescope.builtin"
         local keymaps = {
-            { '<leader>pf', telescope_builtin.find_files,                                                    {} },
-            { '<C-p>',      telescope_builtin.git_files,                                                     {} },
+            { '<leader>ff', telescope_builtin.find_files,                                                    {} },
+            { '<leader>fp',      telescope_builtin.git_files,                                                     {} },
             { '<leader>ps', function() telescope_builtin.grep_string({ search = vim.fn.input "Grep >" }) end },
             { '<leader>fu', function()
                 telescope_builtin.lsp_references()
