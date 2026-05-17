@@ -42,7 +42,7 @@ fi
 
 # libtool required for autoreconf required for gmp required for cgal
 export PATH="/usr/local/opt/libtool/libexec/gnubin:$PATH"
-export PATH="$(yarn global bin):$PATH"
+#export PATH="$(yarn global bin):$PATH"
 #if [ -z "$SSH_AUTH_SOCK" ]; then 
 #  exec ssh-agent bash -c "ssh-add ; $0" echo "The SSH agent was awakened" exit 
 #fi
