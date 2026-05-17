@@ -42,6 +42,13 @@ local tvMon = {
     output = "HDMI-A-1",
     disabled = true
 }
+local function setMons()
+    hl.monitor(tvMon)
+    hl.monitor(desktopMon)
+    hl.monitor(microMon)
+end
+
+setMons()
 
 local terminal = "ghostty"
 local fileManager = "nautilus"
@@ -258,18 +265,12 @@ hl.device({
 })
 
 
-local function applyMonitors()
+local function toggleMons()
     if applying then
         return
     end
 
     applying = true
-    hl.notification.create({
-        icon = "ok",
-        timeout = 7500,
-        text = currentMode
-    })
-
     if currentMode == Mode.DESKTOP then
         tvMon.disabled = false
         desktopMon.disabled = true
@@ -283,9 +284,7 @@ local function applyMonitors()
     end
 
     -- update monitor config
-    hl.monitor(tvMon)
-    hl.monitor(desktopMon)
-    hl.monitor(microMon)
+    setMons()
 
     hl.notification.create({
         icon = "ok",
@@ -296,17 +295,17 @@ local function applyMonitors()
     applying = false
 end
 
-hl.on('hyprland.start', applyMonitors)
 ---------------------
 ---- KEYBINDINGS ----
 ---------------------
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
-hl.bind(mainMod .. " + SHIFT + F2", applyMonitors)
+hl.bind(mainMod .. " + SHIFT + F2", toggleMons)
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+hl.bind(mainMod .. " + M",
+    hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
