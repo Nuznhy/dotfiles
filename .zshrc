@@ -20,6 +20,7 @@ fi
 [[ -f $AUTH_FILE ]] && source $AUTH_FILE
 
 eval "$(rbenv init - zsh)"
+eval "$(zoxide init zsh --cmd cd)"
 export GTK_USE_PORTAL=1
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -149,22 +150,22 @@ export EDITOR='nvim'
 # For a full list of active aliases, run alias.
 #
 # Example aliases
+alias vi="nvim"
 alias vim="nvim"
+
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias sshconfig="vim ~/.ssh"
 alias neofetch="fastfetch"
 alias vimconfig="vim ~/.config/nvim"
-alias zellijLigth=:"zellijLigth.sh"
-alias zellijDark=:"zellijDark.sh"
-alias gp="git pull"
-alias gpr="git pull --rebase"
-alias gfa="git fetch --all"
+
 alias ls='eza --icons'
 alias la='eza -l --icons --sort=type'
-alias tree='eza --tree --icons'
+alias lt='eza --tree --icons'
+
 alias fastfetch="fastfetch-random"
-alias hyprconf="vim ~/.config/hypr"
+alias hyprconf="vim ~/.config/hypr/hyprland.lua"
+
 # To customize prompt, run p10k configure or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
