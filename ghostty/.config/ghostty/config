@@ -42,7 +42,7 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 font-family = "MesloLGS NF"
-font-size = 18
+font-size = 16
 clipboard-read = "allow"
 clipboard-write = "allow"
 copy-on-select = clipboard
