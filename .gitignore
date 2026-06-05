@@ -1,3 +1,7 @@
 *.log
 tmux/plugins
 .config/noctalia/plugins
+codex/.codex/.tmp
+codex/.codex/plugins
+codex/.codex/skills
+codex/.codex/*
