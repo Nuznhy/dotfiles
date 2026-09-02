@@ -9,7 +9,19 @@ local desktopMon = {
     scale = "1.25",
     vrr = false,
     bitdepth = 10,
+    cm = "srgb",
+    sdrbrightness = 1.2,
+    sdrsaturation = 1,
 }
+
+-- local desktopMon = {
+--     output = "DP-1",
+--     mode = "1920x1080@480",
+--     position = "0x0",
+--     scale = "1",
+--     vrr = false,
+--     bitdepth = 10,
+-- }
 
 local microMon = {
     output = "DP-2",
@@ -22,6 +34,7 @@ local tvMon = {
     output = "HDMI-A-1",
     mode = "3840x2160@60.0",
     disabled = true,
+    bitdepth = 10,
 }
 
 local function setMons()

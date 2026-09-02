@@ -248,3 +248,6 @@ note-search() {
     
     [ -n "$file_line" ] && nvim $(echo "$file_line" | cut -d: -f1) +$(echo "$file_line" | cut -d: -f2)
 }
+
+# Added by Hugging Face CLI installer
+export PATH="/home/nuznhy/.local/bin:$PATH"
