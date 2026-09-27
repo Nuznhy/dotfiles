@@ -10,8 +10,8 @@ local function dispatch_float(w)
   local m = hl.get_monitor(w.monitor)
   if m ~= nil then
     hl.dispatch(hl.dsp.window.resize({
-      x = math.floor(m.width * 0.65),
-      y = math.floor(m.height * 0.75),
+      x = math.floor(m.width * 0.55),
+      y = math.floor(m.height * 0.59),
       window = w,
     }))
   end
