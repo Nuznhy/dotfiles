@@ -1,3 +1,6 @@
 [submodule "nvim/.config/nvim"]
 	path = nvim/.config/nvim
 	url = https://github.com/Nuznhy/nvim-config.git
+[submodule "quickshell/.config/quickshell"]
+	path = quickshell/.config/quickshell
+	url = https://github.com/Nuznhy/quickshell-config.git
