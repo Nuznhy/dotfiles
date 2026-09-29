@@ -1,11 +1,7 @@
 #!/bin/zsh
 
 DIRS=(
-  "$HOME/Remomedi/backend"
-  "$HOME/Remomedi"
-  "$HOME"
-  "$HOME/myProjects"
-  "$HOME/Baradata"
+  "$HOME/Projects"
 )
 
 if [[ $# -eq 1 ]]; then

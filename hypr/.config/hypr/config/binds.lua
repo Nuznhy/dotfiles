@@ -1,8 +1,11 @@
-return function(vars, monitors)
+return function(vars)
     local mainMod = vars.mod
 
-    hl.bind(mainMod .. " + SHIFT + F2", monitors.toggleMons)
-
+    hl.bind(
+        "switch:on:Lid Switch",
+        hl.dsp.exec_cmd("noctalia msg session lock-and-suspend"),
+        { locked = true }
+    )
     -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
     hl.bind(mainMod .. " + M",
         hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
@@ -66,8 +69,8 @@ return function(vars, monitors)
         { locked = true, repeating = true })
     hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
         { locked = true, repeating = true })
-    hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
-    hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"),
+    hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set 5%+"), { locked = true, repeating = true })
+    hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 5%-"),
         { locked = true, repeating = true })
 
     -- Requires playerctl

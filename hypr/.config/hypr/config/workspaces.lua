@@ -1,10 +1,10 @@
-hl.workspace_rule({ workspace = "1", monitor = 'DP-1' })
-hl.workspace_rule({ workspace = "2", layout = 'master', monitor = 'DP-1' })
-hl.workspace_rule({ workspace = "3", layout = 'master', monitor = 'DP-1' })
-hl.workspace_rule({ workspace = "4", monitor = 'DP-1' })
-hl.workspace_rule({ workspace = "5", monitor = 'DP-1' })
-hl.workspace_rule({ workspace = "6", monitor = 'DP-1' })
-hl.workspace_rule({ workspace = "9", monitor = 'DP-2' })
+hl.workspace_rule({ workspace = "1", monitor = 'HDMI-A-1' })
+hl.workspace_rule({ workspace = "2", layout = 'master', monitor = 'eDP-1' })
+hl.workspace_rule({ workspace = "3", layout = 'master', monitor = 'eDP-1' })
+hl.workspace_rule({ workspace = "4", monitor = 'HDMI-A-1' })
+hl.workspace_rule({ workspace = "5", monitor = 'HDMI-A-1' })
+hl.workspace_rule({ workspace = "6", monitor = 'eDP-1' })
+hl.workspace_rule({ workspace = "9", monitor = 'eDP-2' })
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
 hl.config({

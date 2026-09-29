@@ -50,7 +50,7 @@ confirm-close-surface = false
 window-inherit-working-directory = false
 quit-after-last-window-closed = true
 # theme = catppuccin-frappe
-theme = noctalia
 
 cursor-style = block
 
+theme = noctalia

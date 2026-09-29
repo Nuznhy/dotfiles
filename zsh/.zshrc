@@ -159,11 +159,10 @@ alias sshconfig="vim ~/.ssh"
 alias neofetch="fastfetch"
 alias vimconfig="vim ~/.config/nvim"
 
-alias ls='eza --icons'
-alias la='eza -l --icons --sort=type'
-alias lt='eza --tree --icons'
+alias ls='eza --icons=auto'
+alias la='eza -l --icons=auto --sort=type'
+alias lt='eza --tree --icons=auto'
 
-alias fastfetch="fastfetch-random"
 alias hyprconf="vim ~/.config/hypr/hyprland.lua"
 
 # To customize prompt, run p10k configure or edit ~/.p10k.zsh.
@@ -251,3 +250,7 @@ note-search() {
 
 # Added by Hugging Face CLI installer
 export PATH="/home/nuznhy/.local/bin:$PATH"
+
+# >>> Codex installer >>>
+export PATH="/home/mnuzhnyi/.local/bin:$PATH"
+# <<< Codex installer <<<

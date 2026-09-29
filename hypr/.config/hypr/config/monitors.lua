@@ -1,12 +1,8 @@
-local Mode = { DESKTOP = 1, TV = 2 }
-local applying = false
-local currentMode = Mode.DESKTOP
-
-local desktopMon = {
-    output = "DP-1",
-    mode = "3840x2160@240.02",
-    position = "0x0",
-    scale = "1.25",
+local laptopMon = {
+    output = "eDP-1",
+    mode = "1920x1200@60",
+    position = "auto",
+    scale = "1",
     vrr = false,
     bitdepth = 10,
     cm = "srgb",
@@ -14,67 +10,27 @@ local desktopMon = {
     sdrsaturation = 1,
 }
 
+local desktopMon = {
+    output = "HDMI-A-1",
+    mode = "2560x1440@144",
+    position = "auto-right",
+    scale = "1",
+    vrr = false,
+    bitdepth = 10,
+}
+
 -- local desktopMon = {
---     output = "DP-1",
---     mode = "1920x1080@480",
---     position = "0x0",
---     scale = "1",
+--     output = "HDMI-A-1",
+--     mode = "3840x2160@240",
+--     position = "auto-left",
+--     scale = "1.5",
 --     vrr = false,
 --     bitdepth = 10,
 -- }
 
-local microMon = {
-    output = "DP-2",
-    mode = "960x640",
-    position = "0x1728",
-    scale = "1",
-}
-
-local tvMon = {
-    output = "HDMI-A-1",
-    mode = "3840x2160@60.0",
-    disabled = true,
-    bitdepth = 10,
-}
-
 local function setMons()
-    hl.monitor(tvMon)
+    hl.monitor(laptopMon)
     hl.monitor(desktopMon)
-    hl.monitor(microMon)
-end
-
-local function toggleMons()
-    if applying then
-        return
-    end
-
-    applying = true
-
-    if currentMode == Mode.DESKTOP then
-        tvMon.disabled = false
-        desktopMon.disabled = true
-        microMon.disabled = true
-        currentMode = Mode.TV
-    else
-        desktopMon.disabled = false
-        microMon.disabled = false
-        tvMon.disabled = true
-        currentMode = Mode.DESKTOP
-    end
-
-    setMons()
-
-    hl.notification.create({
-        icon = "ok",
-        timeout = 7500,
-        text = tostring(currentMode),
-    })
-
-    applying = false
 end
 
 setMons()
-
-return {
-    toggleMons = toggleMons,
-}
