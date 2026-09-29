@@ -28,12 +28,6 @@ hl.window_rule({
 })
 
 hl.window_rule({
-    name = "inferno-position",
-    match = { title = "^(Inferno)$" },
-    workspace = 3
-})
-
-hl.window_rule({
     name = "discord-position",
     match = { class = "^(discord)$" },
     workspace = 3
@@ -42,7 +36,7 @@ hl.window_rule({
 hl.window_rule({
     name = "spotify-position",
     match = { class = "^(Spotify)$" },
-    workspace = 4
+    workspace = 3
 })
 
 hl.window_rule({
@@ -69,6 +63,7 @@ hl.window_rule({
         class = "^(com.mitchellh.ghostty)$"
     },
     opacity = "0.9 override 0.9 override 0.9 override",
+    size = "(monitor_w*0.8) (monitor_h*0.95)",
     workspace = 1,
     float = true,
     center = true
@@ -80,4 +75,10 @@ hl.window_rule({
     match = {
         class = "^(org.gnome.Calculator)$"
     }
+})
+
+hl.window_rule({
+    name = "steam-float",
+    float = true,
+    match = { class = "(^steam$|^Steam$|steamwebhelper)" }
 })
