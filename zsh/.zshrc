@@ -36,7 +36,6 @@ export GTK_USE_PORTAL=1
 #        exit
 #    fi
 #fi
-export GTK_THEME="Adwaita:dark"
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi

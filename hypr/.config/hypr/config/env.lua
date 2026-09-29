@@ -1,6 +1,6 @@
 hl.env("ENCHANT_CONFIG_DICT", "en_US,uk_UA")
 -- hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
-hl.env("QT_STYLE_OVERRIDE", "kvantum")
+hl.env("QT_STYLE_OVERRIDE", "Fusion")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XCURSOR_SIZE", 24)
 hl.env("HYPRCURSOR_SIZE", 24)

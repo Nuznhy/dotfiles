@@ -3,7 +3,7 @@ return function(vars)
 
     hl.bind(
         "switch:on:Lid Switch",
-        hl.dsp.exec_cmd("noctalia msg session lock-and-suspend"),
+        hl.dsp.exec_cmd("loginctl lock-session"),
         { locked = true }
     )
     -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
