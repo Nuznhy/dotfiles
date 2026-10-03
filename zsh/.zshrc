@@ -36,7 +36,6 @@ export GTK_USE_PORTAL=1
 #        exit
 #    fi
 #fi
-export GTK_THEME="Adwaita:dark"
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -162,6 +161,8 @@ alias vimconfig="vim ~/.config/nvim"
 alias ls='eza --icons'
 alias la='eza -l --icons --sort=type'
 alias lt='eza --tree --icons'
+alias llm-mode='sudo systemctl isolate multi-user.target'
+alias desktop-mode='sudo systemctl isolate graphical.target'
 
 alias fastfetch="fastfetch-random"
 alias hyprconf="vim ~/.config/hypr/hyprland.lua"
@@ -251,3 +252,4 @@ note-search() {
 
 # Added by Hugging Face CLI installer
 export PATH="/home/nuznhy/.local/bin:$PATH"
+
