@@ -5,3 +5,13 @@ codex/.codex/.tmp
 codex/.codex/plugins
 codex/.codex/skills
 codex/.codex/*
+
+# Generated application theme sync files
+*/.config/**/quickshell-config
+*/.config/**/quickshell-config.*
+/hypr/.config/hypr/quickshell-colors.*
+/hypr/.config/hypr/quickshell-appearance.*
+/hypr/.config/hypr/hyprtoolkit.conf
+/hypr/.config/hypr/hyprlock.conf
+/nvim/.config/nvim/quickshell-theme.lua
+/zsh/.config/zsh/quickshell-p10k.zsh

@@ -10,3 +10,4 @@ require("config.input")
 require("config.binds")(vars, monitors)
 require("config.rules")
 require("config.workspace_hooks")
+dofile("/home/nuznhy/.config/hypr/quickshell-colors.lua") -- quickshell-colors-override
