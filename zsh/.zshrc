@@ -253,3 +253,8 @@ note-search() {
 # Added by Hugging Face CLI installer
 export PATH="/home/nuznhy/.local/bin:$PATH"
 
+# Dynamic Herdr tab titles; numbering is provided by herdr-tab-title.
+if [[ -r "$HOME/.config/herdr/tab-titles.zsh" ]]; then
+    source "$HOME/.config/herdr/tab-titles.zsh"
+fi
+
