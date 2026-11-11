@@ -1,0 +1,104 @@
+onboarding = false
+
+# Match ~/.config/tmux/tmux.conf: workspaces are projects, tabs are windows.
+[theme]
+auto_switch=false
+name="rose-pine"
+
+[terminal]
+default_shell = "/usr/bin/zsh"
+shell_mode = "non_login"
+new_cwd = "follow"
+
+[keys]
+prefix = "ctrl+b"
+help = "prefix+?"
+detach = "prefix+d"
+reload_config = "prefix+r"
+
+# Session/window navigation. Herdr's settings move off tmux's session key.
+workspace_picker = "prefix+s"
+settings = "prefix+shift+s"
+goto = "prefix+w"
+new_workspace = "prefix+shift+n"
+rename_workspace = "prefix+$"
+new_tab = "prefix+c"
+rename_tab = "prefix+comma"
+previous_tab = "prefix+p"
+next_tab = "prefix+n"
+switch_tab = "prefix+1..9"
+close_tab = "prefix+ampersand"
+
+# Vim pane navigation and shifted resizing, matching h/j/k/l and H/J/K/L.
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+resize_pane_left = "prefix+shift+h"
+resize_pane_down = "prefix+shift+j"
+resize_pane_up = "prefix+shift+k"
+resize_pane_right = "prefix+shift+l"
+# Free Herdr's default H/J/K/L swap bindings for the resize actions above.
+swap_pane_left = ""
+swap_pane_down = ""
+swap_pane_up = ""
+swap_pane_right = ""
+resize_mode = "prefix+shift+r"
+split_vertical = "prefix+|"
+split_horizontal = "prefix+minus"
+cycle_pane_next = "prefix+o"
+open_notification_target = "prefix+shift+o"
+close_pane = "prefix+x"
+zoom = "prefix+z"
+copy_mode = "prefix+["
+toggle_sidebar = "prefix+b"
+
+# Project picker and scratch shell, both matching the tmux 80% popups.
+[[keys.command]]
+key = "prefix+f"
+type = "popup"
+command = '~/.config/herdr/project-picker.sh'
+description = "open project workspace"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+t"
+type = "popup"
+command = "exec /usr/bin/zsh"
+description = "open scratch shell"
+width = "80%"
+height = "80%"
+
+[ui]
+mouse_capture = true
+prompt_new_tab_name = false
+pane_borders = "auto"
+pane_outer_borders = false
+pane_gaps = false
+pane_scrollbars = false
+tab_bar_position = "top"
+hide_tab_bar_when_single_tab = false
+tab_bar_right = [{ type = "zoom" }, { type = "datetime", format = "%Y-%m-%d %H:%M" }]
+accent="#c4a7e7"
+
+[theme.custom]
+peach="#ebbcba"
+teal="#31748f"
+blue="#9ccfd8"
+red="#eb6f92"
+yellow="#f6c177"
+green="#31748f"
+mauve="#c4a7e7"
+subtext0="#908caa"
+text="#e0def4"
+overlay1="#908caa"
+overlay0="#6e6a86"
+surface_dim="#21202e"
+surface1="#26233a"
+surface0="#1f1d2e"
+selection_bg="#403d52"
+active_row_bg="#21202e"
+sidebar_bg="#1f1d2e"
+panel_bg="#191724"
+accent="#c4a7e7"

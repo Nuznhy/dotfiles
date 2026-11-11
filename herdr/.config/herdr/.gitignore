@@ -1,0 +1,7 @@
+*.log
+*.lock
+config.toml.backup*
+plugins/
+plugins.json
+session.json
+session-snapshots/
